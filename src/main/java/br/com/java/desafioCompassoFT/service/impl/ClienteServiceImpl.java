@@ -1,41 +1,42 @@
 package br.com.java.desafioCompassoFT.service.impl;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.java.desafioCompassoFT.entity.Cidades;
 import br.com.java.desafioCompassoFT.entity.Cliente;
+import br.com.java.desafioCompassoFT.repository.ClienteRepository;
 import br.com.java.desafioCompassoFT.service.ClienteService;
 
 @Service
 public class ClienteServiceImpl implements ClienteService {
+	
+	@Autowired
+	ClienteRepository clienteRepository;
 
 	@Override
 	public Cliente save(Cliente cliente) {
-		// TODO Auto-generated method stub
-		return null;
+		return clienteRepository.save(cliente);
 	}
 
 	@Override
-	public Iterable<Cliente> findByCidades(Cidades cidades) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Cliente> findAll() {
+		return clienteRepository.findAll();
 	}
 
 	@Override
 	public Cliente findByIdCliente(Long idCliente) {
-		// TODO Auto-generated method stub
-		return null;
+		return clienteRepository.findByIdCliente(idCliente);
 	}
 
 	@Override
 	public Cliente findByNomeCliente(String nome) {
-		// TODO Auto-generated method stub
-		return null;
+		return clienteRepository.findByNomeCliente(nome);
 	}
 
 	@Override
 	public void delete(Cliente cliente) {
-		// TODO Auto-generated method stub
-		
+		clienteRepository.delete(cliente);
 	}
 }

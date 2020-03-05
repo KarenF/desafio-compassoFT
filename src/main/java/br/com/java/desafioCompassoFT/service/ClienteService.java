@@ -1,8 +1,9 @@
 package br.com.java.desafioCompassoFT.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
-import br.com.java.desafioCompassoFT.entity.Cidades;
 import br.com.java.desafioCompassoFT.entity.Cliente;
 
 @Service
@@ -10,7 +11,7 @@ public interface ClienteService {
 
 	Cliente save(Cliente cliente);
 	
-	Iterable<Cliente> findByCidades(Cidades cidades);
+	List<Cliente> findAll();
 	
 	Cliente findByIdCliente(Long idCliente);
 	
