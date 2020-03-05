@@ -49,7 +49,18 @@
 					</tr>
 				</thead>
 				<tbody>
-
+				TESTE CIDADES
+					<div th:each="cidades : ${cidades}" class="container">
+						<h5>Cidades</h5>
+						<div class="row">
+							<p>
+								Nome da Cidade: <span th:text="${cidades.nomeCidade}"></span>
+							</p>
+							<p>
+								Estado: <span th:text="${cidades.estado}"></span>
+							</p>
+						</div>
+					</div>
 				</tbody>
 			</table>
 		</div>
@@ -67,7 +78,30 @@
 					</tr>
 				</thead>
 				<tbody>
-
+					TESTE CLIENTE
+					<div th:each="cliente : ${cliente}" class="container">
+						<h5>Cliente</h5>
+						<div class="row">
+							<p>
+								ID: <span th:text="${cliente.idCliente}"></span>
+							</p>
+							<p>
+								Nome do Cliente: <span th:text="${cliente.nomeCliente}"></span>
+							</p>
+							<p>
+								Gênero: <span th:text="${cliente.genero}"></span>
+							</p>
+							<p>
+								Data de Nascimento: <span th:text="${cliente.dataNascimento}"></span>
+							</p>
+							<p>
+								Idade: <span th:text="${cliente.idade}"></span>
+							</p>
+							<p>
+								Cidade: <span th:text="${cliente.cidade}"></span>
+							</p>
+						</div>
+					</div>
 				</tbody>
 			</table>
 		</div>
