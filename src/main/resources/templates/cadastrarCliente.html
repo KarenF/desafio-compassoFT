@@ -10,6 +10,7 @@
 	href="materialize/css/materialize.min.css" media="screen,projection" />
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css" />
+<link rel="stylesheet" href="style/styleCss.css" />
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script
@@ -22,12 +23,18 @@
 	<header>
 		<nav>
 			<div class="nav-wrapper">
-				<a href="#" class="brand-logo">Desafio Compasso FT</a>
+				<a href="/" class="brand-logo">Desafio Compasso FT</a>
 				<ul id="nav-mobile" class="right hide-on-med-and-down">
 					<li><a href="/buscar" class="waves-effect waves-light btn"><i
 							class="material-icons left">search</i>Buscar</a></li>
-					<li><a href="/cadastrar" class="waves-effect waves-light btn"><i
-							class="material-icons left">add_circle_outline</i>Cadastrar</a></li>
+					<li><a href="/cadastrarCidades"
+						class="waves-effect waves-light btn"><i
+							class="material-icons left">add_circle_outline</i>Cadastrar
+							Cidades</a></li>
+					<li><a href="/cadastrarCliente"
+						class="waves-effect waves-light btn"><i
+							class="material-icons left">add_circle_outline</i>Cadastrar
+							Cliente</a></li>
 				</ul>
 			</div>
 		</nav>
@@ -35,14 +42,28 @@
 
 	<th:block th:include="mensagemValidacao"></th:block>
 
-	<div class="container">
+	<div class="container cadastrar">
 		<form method="post">
-			Nome da Cidade: <input type="text" value="" name="nomeCidade"
-				placeholder="Nome da Cidade" />
-			<div class="input-field col s6">
-				Estado: <input type="text" value="" name="estado"
-					placeholder="Estado" />
+			Nome do Cliente: <input type="text" value="" name="nomeCliente"
+				placeholder="Nome do Cliente" />
+			<div class="row">
+				<div class="input-field col s6">
+					Gênero: <input type="text" value="" name="genero"
+						placeholder="Gênero" />
+				</div>
+				<div class="input-field col s3">
+					Data de Nascimento: <input type="date" value=""
+						name="dataNascimento" />
+				</div>
+				<div class="input-field col s3">
+					Idade: <input type="text" value="" name="idade" placeholder="Idade" />
+				</div>
+				<div class="input-field col s3">
+					Cidade: <input type="text" value="" name="cidade"
+						placeholder="Cidade do Cliente" />
+				</div>
 			</div>
+
 			<button class="waves-effect waves-light btn" type="submit">Salvar</button>
 		</form>
 	</div>

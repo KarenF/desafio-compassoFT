@@ -45,8 +45,6 @@ public class Cliente implements Serializable {
 	@NotBlank
 	@Column(nullable = false)
 	private String dataNascimento;
-	@NotBlank
-	@Column(nullable = false)
 	private int idade;
 
 	@JoinColumn(name = "cidades", referencedColumnName = "id", updatable = false, nullable = false)
