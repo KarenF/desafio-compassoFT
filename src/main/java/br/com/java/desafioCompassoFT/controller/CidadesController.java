@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.java.desafioCompassoFT.entity.Cidades;
@@ -17,14 +18,14 @@ public class CidadesController {
 
 	@Autowired
 	private CidadesService cidadesService;
-	
+
 	@RequestMapping(value = "/cadastrarCidades", method = RequestMethod.GET)
-	public String form() {
+	public String cadastrarCidades() {
 		return "cadastrarCidades";
 	}
-	
+
 	@RequestMapping(value = "/cadastrarCidades", method = RequestMethod.POST)
-	public String form(@Valid Cidades cidades, BindingResult result, RedirectAttributes attributes) {
+	public String cadastrarCidadesPost(@Valid Cidades cidades, BindingResult result, RedirectAttributes attributes) {
 
 		if (result.hasErrors()) {
 			attributes.addFlashAttribute("mensagem", "Verifique os campos");
@@ -34,5 +35,33 @@ public class CidadesController {
 		cidadesService.save(cidades);
 		attributes.addFlashAttribute("mensagem", "Cidade adicionada com sucesso");
 		return "redirect:/cadastrarCidades";
+	}
+
+	@RequestMapping(value = "/buscarCidades", method = RequestMethod.GET)
+	public String buscarCidades() {
+		return "buscarCidades";
+	}
+
+	@RequestMapping(value = "/buscarCidades", method = RequestMethod.POST)
+	public ModelAndView buscarCidadesPost(@Valid Cidades cidades) {
+
+		ModelAndView mv = new ModelAndView("/buscarCidades");
+
+		String nomeCidade = cidades.getNomeCidade();
+		String nomeEstado = cidades.getEstado();
+
+		if (!nomeCidade.isEmpty()) {
+			cidades = cidadesService.findByNomeCidade(nomeCidade);
+			mv.addObject("cidades", cidades);
+			return mv;
+		} else if (!nomeEstado.isEmpty()) {
+			cidades = cidadesService.findByEstado(nomeEstado);
+			mv.addObject("cidades", cidades);
+			return mv;
+		} else {
+			cidades = cidadesService.findByNomeCidade(nomeCidade);
+			mv.addObject("cidades", cidades);
+			return mv;
+		}
 	}
 }
