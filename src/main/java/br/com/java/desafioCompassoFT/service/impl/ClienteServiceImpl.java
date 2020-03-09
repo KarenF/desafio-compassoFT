@@ -1,5 +1,8 @@
 package br.com.java.desafioCompassoFT.service.impl;
 
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +14,7 @@ import br.com.java.desafioCompassoFT.service.ClienteService;
 
 @Service
 public class ClienteServiceImpl implements ClienteService {
-	
+
 	@Autowired
 	ClienteRepository clienteRepository;
 
@@ -33,6 +36,19 @@ public class ClienteServiceImpl implements ClienteService {
 	@Override
 	public List<Cliente> findByNomeCliente(String nome) {
 		return clienteRepository.findByNomeCliente(nome);
+	}
+
+	@Override
+	public String findByIdade(String dataNascimento) throws Exception {
+
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		LocalDate localDate = LocalDate.parse(dataNascimento, formatter);
+
+		LocalDate now = LocalDate.now();
+		Period diff = Period.between(localDate, now);
+		String idade = diff.getYears() + " anos" + diff.getMonths() + " meses e " + diff.getDays() + " dias";
+
+		return idade;
 	}
 
 	@Override

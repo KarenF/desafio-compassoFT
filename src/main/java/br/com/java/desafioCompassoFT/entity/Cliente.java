@@ -42,10 +42,9 @@ public class Cliente implements Serializable {
 	@NotBlank
 	@Column(nullable = false)
 	private String genero;
-	@NotBlank
 	@Column(nullable = false)
 	private String dataNascimento;
-	private int idade;
+	private String idade;
 
 	@JoinColumn(name = "cidades", referencedColumnName = "id", updatable = false, nullable = false)
 	@ManyToOne(fetch = FetchType.LAZY)

@@ -27,15 +27,17 @@ public class ClienteController {
 	}
 
 	@RequestMapping(value = "/cadastrarCliente", method = RequestMethod.POST)
-	public String form(@Valid Cliente cliente, BindingResult result, RedirectAttributes attributes) {
+	public String form(@Valid Cliente cliente, BindingResult result, RedirectAttributes attributes) throws Exception {
 
 		if (result.hasErrors()) {
 			attributes.addFlashAttribute("mensagem", "Verifique os campos");
 			return "redirect:/cadastrarCliente";
 		}
 
+		String idade = clienteService.findByIdade(cliente.getDataNascimento());
+		cliente.setIdade(idade);
 		clienteService.save(cliente);
-		attributes.addFlashAttribute("mensagem", "Cliente adicionada com sucesso");
+		attributes.addFlashAttribute("mensagem", "Cliente adicionado com sucesso");
 		return "redirect:/cadastrarCliente";
 	}
 

@@ -17,5 +17,7 @@ public interface ClienteService {
 	
 	List<Cliente> findByNomeCliente(String nome);
 	
+	String findByIdade(String dataNascimento) throws Exception;
+	
 	void delete(Cliente cliente);
 }

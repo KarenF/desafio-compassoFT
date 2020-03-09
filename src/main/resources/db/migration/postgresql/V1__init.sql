@@ -9,7 +9,7 @@ id_cliente serial,
 nome_cliente varchar(50),
 genero varchar(50),
 data_nascimento varchar(50),
-idade integer,
+idade varchar(50),
 cidades integer,
 primary key (id_cliente),
 foreign key(cidades) references cidades(id));
