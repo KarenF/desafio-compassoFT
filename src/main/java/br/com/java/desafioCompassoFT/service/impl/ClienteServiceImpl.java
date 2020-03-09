@@ -46,7 +46,7 @@ public class ClienteServiceImpl implements ClienteService {
 
 		LocalDate now = LocalDate.now();
 		Period diff = Period.between(localDate, now);
-		String idade = diff.getYears() + " anos" + diff.getMonths() + " meses e " + diff.getDays() + " dias";
+		String idade = diff.getYears() + " anos " + diff.getMonths() + " meses e " + diff.getDays() + " dias";
 
 		return idade;
 	}

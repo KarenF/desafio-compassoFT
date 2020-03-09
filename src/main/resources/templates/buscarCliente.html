@@ -38,50 +38,55 @@
 		</nav>
 	</header>
 
-	<div class="row index">
-		<div class="col s12">
-			<ul class="tabs">
-				<li class="tab col s3"><a class="active" href="#cliente">Cliente</a></li>
-			</ul>
-		</div>
-		<div id="cliente" class="col s12">
-			<form action="/buscarCliente" class="form-inline">
-				<div class="form-group mb-2">
+	<th:block th:include="mensagemValidacao"></th:block>
+
+	<div class="container cadastrar">
+		<form action="/buscarCliente" class="form-inline">
+			<div class="row">
+				<div class="input-field col s8">
 					<input type="text" class="form-control" name="nomeCliente"
-						placeholder="Procurar Nome do Cliente" /> <input type="submit"
-						value="Procurar Cliente" class="waves-effect waves-light btn" />
+						placeholder="Procurar Nome do Cliente" />
 				</div>
-			</form>
-			<form action="/buscarIdCliente" class="form-inline">
-				<div class="form-group mb-2">
+				<div class="input-field col s4">
+					<input type="submit" value="Procurar Cliente"
+						class="waves-effect waves-light btn" />
+				</div>
+			</div>
+		</form>
+		<form action="/buscarIdCliente" class="form-inline">
+			<div class="row">
+				<div class="input-field col s8">
 					<input type="text" class="form-control" name="idCliente"
-						placeholder="Procurar pelo Id do Cliente" /> <input type="submit"
-						value="Procurar Id Cliente" class="waves-effect waves-light btn" />
+						placeholder="Procurar pelo Id do Cliente" />
 				</div>
-			</form>
-			<table class="container">
-				<thead>
-					<tr>
-						<th>ID</th>
-						<th>Nome do Cliente</th>
-						<th>Gênero</th>
-						<th>Data de Nascimento</th>
-						<th>Idade</th>
-						<th>Nome da Cidade</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:each="cliente : ${cliente}">
-						<td><span th:text="${cliente.idCliente}"></span></td>
-						<td><span th:text="${cliente.nomeCliente}"></span></td>
-						<td><span th:text="${cliente.genero}"></span></td>
-						<td><span th:text="${cliente.dataNascimento}"></span></td>
-						<td><span th:text="${cliente.idade}"></span></td>
-						<td><span th:text="${cliente.cidades}"></span></td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
+				<div class="input-field col s4">
+					<input type="submit" value="Procurar Id Cliente"
+						class="waves-effect waves-light btn" />
+				</div>
+			</div>
+		</form>
+		<table>
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Nome do Cliente</th>
+					<th>Gênero</th>
+					<th>Data de Nascimento</th>
+					<th>Idade</th>
+					<th>Nome da Cidade</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="cliente : ${cliente}">
+					<td><span th:text="${cliente.idCliente}"></span></td>
+					<td><span th:text="${cliente.nomeCliente}"></span></td>
+					<td><span th:text="${cliente.genero}"></span></td>
+					<td><span th:text="${cliente.dataNascimento}"></span></td>
+					<td><span th:text="${cliente.idade}"></span></td>
+					<td><span th:text="${cliente.cidades}"></span></td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 
 	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
