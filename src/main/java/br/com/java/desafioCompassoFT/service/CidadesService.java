@@ -15,5 +15,5 @@ public interface CidadesService {
 	
 	List<Cidades> findByNomeCidade(String nomeCidade);
 	
-	Cidades findByEstado(String estado);
+	List<Cidades> findByEstado(String estado);
 }

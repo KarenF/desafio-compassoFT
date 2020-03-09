@@ -31,7 +31,7 @@ public class CidadesServiceImpl implements CidadesService {
 	}
 
 	@Override
-	public Cidades findByEstado(String estado) {
+	public List<Cidades> findByEstado(String estado) {
 		return cidadesRepository.findByEstado(estado);
 	}
 }
