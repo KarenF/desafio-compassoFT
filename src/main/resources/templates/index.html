@@ -105,7 +105,8 @@
 						<td><a class="waves-effect waves-light btn-small blue"
 							th:href="${(#mvc.url('CC#atualizarCliente').arg(0, cliente.idCliente)).build()}"><i
 								class="material-icons left">update</i>Atualizar</a></td>
-						<td><a class="waves-effect waves-light btn-small red"><i
+						<td><a class="waves-effect waves-light btn-small red"
+							th:href="${(#mvc.url('CC#deletarCliente').arg(0, cliente.idCliente)).build()}"><i
 								class="material-icons left">delete</i>Deletar</a></td>
 					</tr>
 				</tbody>

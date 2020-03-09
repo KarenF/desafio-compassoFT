@@ -62,4 +62,12 @@ public class ClienteController {
 		attributes.addFlashAttribute("mensagem", "Cliente atualizado com sucesso");
 		return "redirect:/";
 	}
+	
+	@RequestMapping("/deletarCliente")
+	public String deletarCliente(Long idCliente) {
+		Cliente cliente = clienteService.findByIdCliente(idCliente);
+		clienteService.delete(cliente);
+
+		return "redirect:/";
+	}
 }
