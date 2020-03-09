@@ -25,9 +25,6 @@
 			<div class="nav-wrapper">
 				<a href="/" class="brand-logo">Desafio Compasso FT</a>
 				<ul id="nav-mobile" class="right hide-on-med-and-down">
-					<li><a href="/buscarCliente"
-						class="waves-effect waves-light btn"><i
-							class="material-icons left">search</i>Buscar Cliente</a></li>
 					<li><a href="/cadastrarCidades"
 						class="waves-effect waves-light btn"><i
 							class="material-icons left">add_circle_outline</i>Cadastrar
@@ -49,16 +46,7 @@
 			</ul>
 		</div>
 		<div id="cidades" class="col s12">
-			<ul id="nav-mobile" class="right hide-on-med-and-down">
-				<li><a href="/buscarCidades"
-					class="waves-effect waves-light btn"><i
-						class="material-icons left">search</i>Procurar Cidades</a></li>
-				<p>
-				<li><a href="/buscarEstado"
-					class="waves-effect waves-light btn"><i
-						class="material-icons left">search</i>Procurar Estado</a></li>
-			</ul>
-			<table class="container">
+			<table>
 				<thead>
 					<tr>
 						<th>Nome da Cidade</th>
@@ -72,18 +60,16 @@
 					</tr>
 				</tbody>
 			</table>
+			<ul class="right">
+				<li><a href="/buscarCidades"
+					class="waves-effect waves-light btn"><i
+						class="material-icons left">search</i>Procurar Cidades</a> <a
+					href="/buscarEstado" class="waves-effect waves-light btn"><i
+						class="material-icons left">search</i>Procurar Estado</a></li>
+			</ul>
 		</div>
 		<div id="cliente" class="col s12">
-			<ul id="nav-mobile" class="right hide-on-med-and-down">
-				<li><a href="/buscarCliente"
-					class="waves-effect waves-light btn"><i
-						class="material-icons left">search</i>Procurar Cliente</a></li>
-				<p>
-				<li><a href="/buscarIdCliente"
-					class="waves-effect waves-light btn"><i
-						class="material-icons left">search</i>Procurar pelo Id do Cliente</a></li>
-			</ul>
-			<table class="container">
+			<table>
 				<thead>
 					<tr>
 						<th>ID do Cliente</th>
@@ -106,13 +92,20 @@
 						<td><span th:text="${cliente.cidades}"></span></td>
 						<td><a class="waves-effect waves-light btn-small blue"
 							th:href="${(#mvc.url('CC#atualizarCliente').arg(0, cliente.idCliente)).build()}"><i
-								class="material-icons left">update</i>Atualizar</a></td>
+								class="material-icons">edit</i></a></td>
 						<td><a class="waves-effect waves-light btn-small red"
 							th:href="${(#mvc.url('CC#deletarCliente').arg(0, cliente.idCliente)).build()}"><i
-								class="material-icons left">delete</i>Deletar</a></td>
+								class="material-icons">delete</i></a></td>
 					</tr>
 				</tbody>
 			</table>
+			<ul class="right">
+				<li><a href="/buscarCliente"
+					class="waves-effect waves-light btn"><i
+						class="material-icons left">search</i>Procurar Cliente</a> <a
+					href="/buscarIdCliente" class="waves-effect waves-light btn"><i
+						class="material-icons left">search</i>Procurar pelo ID</a></li>
+			</ul>
 		</div>
 	</div>
 
