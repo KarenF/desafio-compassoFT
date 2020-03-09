@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Desafio</title>
+<meta name="viewport" content="width = device-width, initial-scale = 1"
+	charset=utf-8 />
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+<link type="text/css" rel="stylesheet"
+	href="materialize/css/materialize.min.css" media="screen,projection" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css" />
+<link rel="stylesheet" href="style/styleCss.css" />
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
+	
+</script>
+</head>
+
+<body>
+	<header>
+		<nav>
+			<div class="nav-wrapper">
+				<a href="/" class="brand-logo">Desafio Compasso FT</a>
+				<ul id="nav-mobile" class="right hide-on-med-and-down">
+					<li><a href="/cadastrarCidades"
+						class="waves-effect waves-light btn"><i
+							class="material-icons left">add_circle_outline</i>Cadastrar
+							Cidades</a></li>
+					<li><a href="/cadastrarCliente"
+						class="waves-effect waves-light btn"><i
+							class="material-icons left">add_circle_outline</i>Cadastrar
+							Cliente</a></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+
+	<th:block th:include="mensagemValidacao"></th:block>
+
+	<div class="container formAtualizarConvidado">
+		<form action="#"
+			th:action="@{/atualizarCliente/{idCliente}(idCliente=${cliente.idCliente})}"
+			th:object="${cliente}" method="post">
+			Nome do Cliente: <input type="text" th:field="*{nomeCliente}" />
+			<div class="row">
+				<div class="input-field col s6">
+					Gênero: <input type="text" th:field="*{genero}" readonly />
+				</div>
+				<div class="input-field col s6">
+					Data de Nascimento: <input type="text" th:field="*{dataNascimento}" readonly />
+				</div>
+				<div class="input-field col s6">
+					Idade: <input type="text" th:field="*{idade}" readonly />
+				</div>
+				<div class="input-field col s6">
+					Cidade: <input type="text" th:field="*{cidades}" readonly />
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s6">
+					ID Cliente: <input type="text" th:field="*{idCliente}" readonly />
+				</div>
+			</div>
+
+			<button class="waves-effect waves-light btn" type="submit">Salvar</button>
+		</form>
+	</div>
+
+	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+
+</body>
+
+</html>

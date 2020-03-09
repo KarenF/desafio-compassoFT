@@ -102,6 +102,9 @@
 						<td><span th:text="${cliente.dataNascimento}"></span></td>
 						<td><span th:text="${cliente.idade}"></span></td>
 						<td><span th:text="${cliente.cidades}"></span></td>
+						<td><a class="waves-effect waves-light btn-small blue"
+							th:href="${(#mvc.url('CC#atualizarCliente').arg(0, cliente.idCliente)).build()}"><i
+								class="material-icons left">update</i>Atualizar</a></td>
 						<td><a class="waves-effect waves-light btn-small red"><i
 								class="material-icons left">delete</i>Deletar</a></td>
 					</tr>
