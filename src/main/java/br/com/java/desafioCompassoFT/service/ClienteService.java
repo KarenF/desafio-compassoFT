@@ -15,7 +15,7 @@ public interface ClienteService {
 	
 	Cliente findByIdCliente(Long idCliente);
 	
-	Cliente findByNomeCliente(String nome);
+	List<Cliente> findByNomeCliente(String nome);
 	
 	void delete(Cliente cliente);
 }

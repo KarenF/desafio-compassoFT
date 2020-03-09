@@ -54,5 +54,23 @@ public class IndexController {
 		return mv;
 	}
 	
+	@RequestMapping(value = "/buscarCliente", method = RequestMethod.GET)
+	public ModelAndView buscarCliente(Cliente cliente, @RequestParam(defaultValue = "") String nomeCliente) {
+		
+		ModelAndView mv = new ModelAndView("/buscarCliente");
+		mv.addObject("cliente", clienteService.findByNomeCliente(nomeCliente));
+		
+		return mv;
+	}
+	
+	@RequestMapping(value = "/buscarIdCliente", method = RequestMethod.GET)
+	public ModelAndView buscarIdCliente(Cliente cliente, @RequestParam(defaultValue = "") Long idCliente) {
+		
+		ModelAndView mv = new ModelAndView("/buscarCliente");
+		mv.addObject("cliente", clienteService.findByIdCliente(idCliente));
+		
+		return mv;
+	}
+	
 	
 }

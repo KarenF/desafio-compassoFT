@@ -31,7 +31,7 @@ public class ClienteServiceImpl implements ClienteService {
 	}
 
 	@Override
-	public Cliente findByNomeCliente(String nome) {
+	public List<Cliente> findByNomeCliente(String nome) {
 		return clienteRepository.findByNomeCliente(nome);
 	}
 

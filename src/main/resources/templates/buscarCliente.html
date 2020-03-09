@@ -25,9 +25,6 @@
 			<div class="nav-wrapper">
 				<a href="/" class="brand-logo">Desafio Compasso FT</a>
 				<ul id="nav-mobile" class="right hide-on-med-and-down">
-					<li><a href="/buscarCliente"
-						class="waves-effect waves-light btn"><i
-							class="material-icons left">search</i>Buscar Cliente</a></li>
 					<li><a href="/cadastrarCidades"
 						class="waves-effect waves-light btn"><i
 							class="material-icons left">add_circle_outline</i>Cadastrar
@@ -44,66 +41,43 @@
 	<div class="row index">
 		<div class="col s12">
 			<ul class="tabs">
-				<li class="tab col s3"><a class="active" href="#cidades">Cidades</a></li>
-				<li class="tab col s3"><a href="#cliente">Cliente</a></li>
+				<li class="tab col s3"><a class="active" href="#cliente">Cliente</a></li>
 			</ul>
-		</div>
-		<div id="cidades" class="col s12">
-			<ul id="nav-mobile" class="right hide-on-med-and-down">
-				<li><a href="/buscarCidades"
-					class="waves-effect waves-light btn"><i
-						class="material-icons left">search</i>Procurar Cidades</a></li>
-				<p>
-				<li><a href="/buscarEstado"
-					class="waves-effect waves-light btn"><i
-						class="material-icons left">search</i>Procurar Estado</a></li>
-			</ul>
-			<table class="container">
-				<thead>
-					<tr>
-						<th>Nome da Cidade</th>
-						<th>Estado</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:each="cidades : ${cidades}">
-						<td><span th:text="${cidades.nomeCidade}"></span></td>
-						<td><span th:text="${cidades.estado}"></span></td>
-					</tr>
-				</tbody>
-			</table>
 		</div>
 		<div id="cliente" class="col s12">
-			<ul id="nav-mobile" class="right hide-on-med-and-down">
-				<li><a href="/buscarCliente"
-					class="waves-effect waves-light btn"><i
-						class="material-icons left">search</i>Procurar Cliente</a></li>
-				<p>
-				<li><a href="/buscarIdCliente"
-					class="waves-effect waves-light btn"><i
-						class="material-icons left">search</i>Procurar pelo Id do Cliente</a></li>
-			</ul>
+			<form action="/buscarCliente" class="form-inline">
+				<div class="form-group mb-2">
+					<input type="text" class="form-control" name="nomeCliente"
+						placeholder="Procurar Nome do Cliente" /> <input type="submit"
+						value="Procurar Cliente" class="waves-effect waves-light btn" />
+				</div>
+			</form>
+			<form action="/buscarIdCliente" class="form-inline">
+				<div class="form-group mb-2">
+					<input type="text" class="form-control" name="idCliente"
+						placeholder="Procurar pelo Id do Cliente" /> <input type="submit"
+						value="Procurar Id Cliente" class="waves-effect waves-light btn" />
+				</div>
+			</form>
 			<table class="container">
 				<thead>
 					<tr>
+						<th>ID</th>
 						<th>Nome do Cliente</th>
 						<th>Gênero</th>
 						<th>Data de Nascimento</th>
 						<th>Idade</th>
 						<th>Nome da Cidade</th>
-						<th>Atualizar</th>
-						<th>Deletar</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr th:each="cliente : ${cliente}">
+						<td><span th:text="${cliente.idCliente}"></span></td>
 						<td><span th:text="${cliente.nomeCliente}"></span></td>
 						<td><span th:text="${cliente.genero}"></span></td>
 						<td><span th:text="${cliente.dataNascimento}"></span></td>
 						<td><span th:text="${cliente.idade}"></span></td>
 						<td><span th:text="${cliente.cidades}"></span></td>
-						<td><a class="waves-effect waves-light btn-small red"><i
-								class="material-icons left">delete</i>Deletar</a></td>
 					</tr>
 				</tbody>
 			</table>
