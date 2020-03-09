@@ -23,7 +23,7 @@ public class ClienteController {
 
 	@RequestMapping(value = "/cadastrarCliente", method = RequestMethod.GET)
 	public String form() {
-		return "cadastrarCliente";
+		return "cadastrar/cadastrarCliente";
 	}
 
 	@RequestMapping(value = "/cadastrarCliente", method = RequestMethod.POST)

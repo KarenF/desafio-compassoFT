@@ -39,7 +39,7 @@ public class IndexController {
 	@RequestMapping(value = "/buscarCidades", method = RequestMethod.GET)
 	public ModelAndView buscarCidades(Cidades cidades, @RequestParam(defaultValue = "") String nomeCidade) {
 		
-		ModelAndView mv = new ModelAndView("/buscarCidades");
+		ModelAndView mv = new ModelAndView("/buscar/buscarCidades");
 		mv.addObject("cidades", cidadesService.findByNomeCidade(nomeCidade));
 		
 		return mv;
@@ -48,7 +48,7 @@ public class IndexController {
 	@RequestMapping(value = "/buscarEstado", method = RequestMethod.GET)
 	public ModelAndView buscarEstado(Cidades cidades, @RequestParam(defaultValue = "") String estado) {
 		
-		ModelAndView mv = new ModelAndView("/buscarCidades");
+		ModelAndView mv = new ModelAndView("/buscar/buscarCidades");
 		mv.addObject("cidades", cidadesService.findByEstado(estado));
 		
 		return mv;
@@ -57,7 +57,7 @@ public class IndexController {
 	@RequestMapping(value = "/buscarCliente", method = RequestMethod.GET)
 	public ModelAndView buscarCliente(Cliente cliente, @RequestParam(defaultValue = "") String nomeCliente) {
 		
-		ModelAndView mv = new ModelAndView("/buscarCliente");
+		ModelAndView mv = new ModelAndView("/buscar/buscarCliente");
 		mv.addObject("cliente", clienteService.findByNomeCliente(nomeCliente));
 		
 		return mv;
@@ -66,7 +66,7 @@ public class IndexController {
 	@RequestMapping(value = "/buscarIdCliente", method = RequestMethod.GET)
 	public ModelAndView buscarIdCliente(Cliente cliente, @RequestParam(defaultValue = "") Long idCliente) {
 		
-		ModelAndView mv = new ModelAndView("/buscarCliente");
+		ModelAndView mv = new ModelAndView("/buscar/buscarCliente");
 		mv.addObject("cliente", clienteService.findByIdCliente(idCliente));
 		
 		return mv;

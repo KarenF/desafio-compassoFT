@@ -20,7 +20,7 @@ public class CidadesController {
 
 	@RequestMapping(value = "/cadastrarCidades", method = RequestMethod.GET)
 	public String cadastrarCidades() {
-		return "cadastrarCidades";
+		return "cadastrar/cadastrarCidades";
 	}
 
 	@RequestMapping(value = "/cadastrarCidades", method = RequestMethod.POST)
