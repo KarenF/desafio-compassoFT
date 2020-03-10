@@ -45,8 +45,15 @@ public class ClienteServiceImpl implements ClienteService {
 		LocalDate localDate = LocalDate.parse(dataNascimento, formatter);
 
 		LocalDate now = LocalDate.now();
+		String idade;
+		
+		if(localDate.isAfter(now)) {
+			idade = "Ainda não nasceu";
+			return idade;
+		}
+		
 		Period diff = Period.between(localDate, now);
-		String idade = diff.getYears() + " anos " + diff.getMonths() + " meses e " + diff.getDays() + " dias";
+		idade = diff.getYears() + " anos " + diff.getMonths() + " meses e " + diff.getDays() + " dias";
 
 		return idade;
 	}
