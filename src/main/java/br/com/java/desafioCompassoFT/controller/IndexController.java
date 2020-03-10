@@ -74,14 +74,14 @@ public class IndexController {
 		if (idCliente.matches("[0-9]*")) {
 			cliente = this.clienteService.findByIdCliente(Long.parseLong(idCliente));
 			if (cliente.equals(null)) {
+				System.out.println("ID NAO EXISTE!!!!!!!!!!!!!!!!!!!!!");
 				throw new NotFoundException("ID não consta no banco de dados");
 			}
 			mv.addObject("cliente", cliente);
 			return mv;
 		} else {
+			System.out.println("STRIIIIIIIIIIIIIIIIIIIIINGGGGGGGGGGG!!!!!");
 			throw new BadRequest("O ID deve ser um número");
 		}
-
 	}
-
 }
