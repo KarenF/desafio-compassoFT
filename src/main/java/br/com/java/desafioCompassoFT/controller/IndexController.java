@@ -11,66 +11,77 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.com.java.desafioCompassoFT.entity.Cidades;
 import br.com.java.desafioCompassoFT.entity.Cliente;
+import br.com.java.desafioCompassoFT.errors.BadRequest;
+import br.com.java.desafioCompassoFT.errors.NotFoundException;
 import br.com.java.desafioCompassoFT.service.CidadesService;
 import br.com.java.desafioCompassoFT.service.ClienteService;
 
 @Controller
 public class IndexController {
-	
+
 	@Autowired
 	CidadesService cidadesService;
-	
+
 	@Autowired
 	ClienteService clienteService;
-	
+
 	@RequestMapping(value = "/")
 	public ModelAndView lista() {
 		ModelAndView mv = new ModelAndView("index");
-		
+
 		List<Cidades> cidades = cidadesService.findAll();
 		mv.addObject("cidades", cidades);
-		
+
 		List<Cliente> cliente = clienteService.findAll();
 		mv.addObject("cliente", cliente);
-		
+
 		return mv;
 	}
-	
+
 	@RequestMapping(value = "/buscarCidades", method = RequestMethod.GET)
 	public ModelAndView buscarCidades(Cidades cidades, @RequestParam(defaultValue = "") String nomeCidade) {
-		
+
 		ModelAndView mv = new ModelAndView("/buscar/buscarCidades");
 		mv.addObject("cidades", cidadesService.findByNomeCidade(nomeCidade));
-		
+
 		return mv;
 	}
-	
+
 	@RequestMapping(value = "/buscarEstado", method = RequestMethod.GET)
 	public ModelAndView buscarEstado(Cidades cidades, @RequestParam(defaultValue = "") String estado) {
-		
+
 		ModelAndView mv = new ModelAndView("/buscar/buscarCidades");
 		mv.addObject("cidades", cidadesService.findByEstado(estado));
-		
+
 		return mv;
 	}
-	
+
 	@RequestMapping(value = "/buscarCliente", method = RequestMethod.GET)
 	public ModelAndView buscarCliente(Cliente cliente, @RequestParam(defaultValue = "") String nomeCliente) {
-		
+
 		ModelAndView mv = new ModelAndView("/buscar/buscarCliente");
 		mv.addObject("cliente", clienteService.findByNomeClienteLike(nomeCliente));
-		
+
 		return mv;
 	}
-	
+
 	@RequestMapping(value = "/buscarIdCliente", method = RequestMethod.GET)
-	public ModelAndView buscarIdCliente(Cliente cliente, @RequestParam(defaultValue = "") Long idCliente) {
-		
+	public ModelAndView buscarIdCliente(@RequestParam String idCliente) {
+
 		ModelAndView mv = new ModelAndView("/buscar/buscarCliente");
-		mv.addObject("cliente", clienteService.findByIdCliente(idCliente));
-		
-		return mv;
+
+		Cliente cliente = new Cliente();
+		if (idCliente.matches("[0-9]*")) {
+			cliente = this.clienteService.findByIdCliente(Long.parseLong(idCliente));
+			if (cliente.equals(null)) {
+				throw new NotFoundException("ID não consta no banco de dados");
+			}
+			mv.addObject("cliente", cliente);
+			return mv;
+		} else {
+			throw new BadRequest("O ID deve ser um número");
+		}
+
 	}
-	
-	
+
 }
