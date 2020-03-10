@@ -66,21 +66,19 @@ public class IndexController {
 	}
 
 	@RequestMapping(value = "/buscarIdCliente", method = RequestMethod.GET)
-	public ModelAndView buscarIdCliente(@RequestParam String idCliente) {
+	public ModelAndView buscarIdCliente(@RequestParam(defaultValue = "") String idCliente) {
 
 		ModelAndView mv = new ModelAndView("/buscar/buscarCliente");
 
 		Cliente cliente = new Cliente();
 		if (idCliente.matches("[0-9]*")) {
 			cliente = this.clienteService.findByIdCliente(Long.parseLong(idCliente));
-			if (cliente.equals(null)) {
-				System.out.println("ID NAO EXISTE!!!!!!!!!!!!!!!!!!!!!");
+			if (idCliente.equals(null)) {
 				throw new NotFoundException("ID não consta no banco de dados");
 			}
 			mv.addObject("cliente", cliente);
 			return mv;
 		} else {
-			System.out.println("STRIIIIIIIIIIIIIIIIIIIIINGGGGGGGGGGG!!!!!");
 			throw new BadRequest("O ID deve ser um número");
 		}
 	}
