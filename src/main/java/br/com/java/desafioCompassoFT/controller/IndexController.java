@@ -58,7 +58,7 @@ public class IndexController {
 	public ModelAndView buscarCliente(Cliente cliente, @RequestParam(defaultValue = "") String nomeCliente) {
 		
 		ModelAndView mv = new ModelAndView("/buscar/buscarCliente");
-		mv.addObject("cliente", clienteService.findByNomeCliente(nomeCliente));
+		mv.addObject("cliente", clienteService.findByNomeClienteLike(nomeCliente));
 		
 		return mv;
 	}

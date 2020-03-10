@@ -15,7 +15,7 @@ public interface ClienteService {
 	
 	Cliente findByIdCliente(Long idCliente);
 	
-	List<Cliente> findByNomeCliente(String nome);
+	List<Cliente> findByNomeClienteLike(String nomeCliente);
 	
 	String findByIdade(String dataNascimento) throws Exception;
 	
