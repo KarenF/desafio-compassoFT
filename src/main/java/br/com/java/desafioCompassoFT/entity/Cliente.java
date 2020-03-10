@@ -42,6 +42,7 @@ public class Cliente implements Serializable {
 	@NotBlank
 	@Column(nullable = false)
 	private String genero;
+	@NotBlank
 	@Column(nullable = false)
 	private String dataNascimento;
 	private String idade;
