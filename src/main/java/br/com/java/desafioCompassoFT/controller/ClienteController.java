@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import br.com.java.desafioCompassoFT.entity.Cidades;
 import br.com.java.desafioCompassoFT.entity.Cliente;
+import br.com.java.desafioCompassoFT.model.ClienteModel;
 import br.com.java.desafioCompassoFT.service.CidadesService;
 import br.com.java.desafioCompassoFT.service.ClienteService;
 
@@ -34,15 +36,26 @@ public class ClienteController {
 	}
 
 	@RequestMapping(value = "/cadastrarCliente", method = RequestMethod.POST)
-	public String form(@Valid Cliente cliente, BindingResult result, RedirectAttributes attributes) throws Exception {
+	public String form(@Valid ClienteModel clienteModel, BindingResult result, RedirectAttributes attributes) throws Exception {
 
 		if (result.hasErrors()) {
 			attributes.addFlashAttribute("mensagem", "Verifique os campos");
 			return "redirect:/cadastrarCliente";
 		}
-
-		String idade = clienteService.findByIdade(cliente.getDataNascimento());
+		
+		Cidades cidades = cidadesService.findById(clienteModel.getId());
+		Cliente cliente = new Cliente();
+		
+		cliente.setNomeCliente(clienteModel.getNomeCliente());
+		cliente.setGenero(clienteModel.getGenero());
+		cliente.setDataNascimento(clienteModel.getDataNascimento());
+		cliente.setCidades(cidades);
+		
+		String idade = clienteService.findByIdade(clienteModel.getDataNascimento());
 		cliente.setIdade(idade);
+		
+		System.out.println("AAAAAAAAAAAAAAAAAa" + clienteModel.getNomeCliente() );
+		
 		clienteService.save(cliente);
 		attributes.addFlashAttribute("mensagem", "Cliente adicionado com sucesso");
 		return "redirect:/cadastrarCliente";

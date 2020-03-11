@@ -8,7 +8,7 @@ create table cliente(
 id_cliente serial,
 nome_cliente varchar(50),
 genero varchar(50),
-data_nascimento varchar(50),
+data_nascimento date,
 idade varchar(50),
 cidades integer,
 primary key (id_cliente),

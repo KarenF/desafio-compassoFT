@@ -1,6 +1,7 @@
 package br.com.java.desafioCompassoFT.entity;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -39,9 +40,7 @@ public class Cliente implements Serializable {
 	@NotBlank
 	@Column(nullable = false)
 	private String genero;
-	@NotBlank
-	@Column(nullable = false)
-	private String dataNascimento;
+	private LocalDate dataNascimento;
 	private String idade;
 
 	private Cidades cidades;

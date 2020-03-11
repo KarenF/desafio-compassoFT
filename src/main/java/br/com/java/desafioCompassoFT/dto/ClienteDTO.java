@@ -1,7 +1,8 @@
 package br.com.java.desafioCompassoFT.dto;
 
+import java.time.LocalDate;
+
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Length;
 
@@ -21,8 +22,7 @@ public class ClienteDTO {
 	@NotBlank
 	@Length(min = 1, max = 50, message = "O gênero deve conter entre 1 e 50 caracteres")
 	private String genero;
-	private String dataNascimento;
-	@Size(min = 0, max = 120, message = "A idade deve ser entre 0 e 120")
+	private LocalDate dataNascimento;
 	private int idade;
 
 	private Cidades cidades;

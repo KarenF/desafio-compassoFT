@@ -26,6 +26,16 @@ public class CidadesServiceImpl implements CidadesService {
 	}
 
 	@Override
+	public Cidades findById(Long id) {
+		return this.cidadesRepository.findById(id).get(); 
+	}
+	
+	@Override
+	public Cidades findByNomeCidade(String nomeCidade) {
+		return cidadesRepository.findByNomeCidade(nomeCidade);
+	}
+
+	@Override
 	public List<Cidades> findByNomeCidadeLike(String nomeCidade) {
 		return cidadesRepository.findByNomeCidadeLike("%"+nomeCidade+"%");
 	}

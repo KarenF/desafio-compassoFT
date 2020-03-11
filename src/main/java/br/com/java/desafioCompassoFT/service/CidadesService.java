@@ -13,6 +13,10 @@ public interface CidadesService {
 	
 	List<Cidades> findAll();
 	
+	Cidades findById(Long id);
+	
+	Cidades findByNomeCidade(String nomeCidade);
+	
 	List<Cidades> findByNomeCidadeLike(String nomeCidade);
 	
 	List<Cidades> findByEstadoLike(String estado);
