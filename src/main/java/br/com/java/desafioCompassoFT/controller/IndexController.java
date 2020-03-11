@@ -13,6 +13,7 @@ import br.com.java.desafioCompassoFT.entity.Cidades;
 import br.com.java.desafioCompassoFT.entity.Cliente;
 import br.com.java.desafioCompassoFT.errors.BadRequest;
 import br.com.java.desafioCompassoFT.errors.NotFoundException;
+import br.com.java.desafioCompassoFT.model.IndexModel;
 import br.com.java.desafioCompassoFT.service.CidadesService;
 import br.com.java.desafioCompassoFT.service.ClienteService;
 
@@ -30,10 +31,13 @@ public class IndexController {
 		ModelAndView mv = new ModelAndView("index");
 
 		List<Cidades> cidades = cidadesService.findAll();
-		mv.addObject("cidades", cidades);
+		List<Cliente> clientes = clienteService.findAll();
 
-		List<Cliente> cliente = clienteService.findAll();
-		mv.addObject("cliente", cliente);
+		IndexModel model = new IndexModel();
+
+		model.setCidades(cidades);
+		model.setClientes(clientes);
+		mv.addObject("model", model);
 
 		return mv;
 	}
