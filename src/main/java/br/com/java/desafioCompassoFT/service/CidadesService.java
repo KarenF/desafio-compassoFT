@@ -13,7 +13,7 @@ public interface CidadesService {
 	
 	List<Cidades> findAll();
 	
-	List<Cidades> findByNomeCidade(String nomeCidade);
+	List<Cidades> findByNomeCidadeLike(String nomeCidade);
 	
-	List<Cidades> findByEstado(String estado);
+	List<Cidades> findByEstadoLike(String estado);
 }

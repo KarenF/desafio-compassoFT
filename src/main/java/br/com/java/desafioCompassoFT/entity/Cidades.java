@@ -3,7 +3,6 @@ package br.com.java.desafioCompassoFT.entity;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -44,6 +43,6 @@ public class Cidades implements Serializable {
 	@Column(nullable = false)
 	private String estado;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "cidades", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "cidades")
 	private List<Cliente> cliente;
 }

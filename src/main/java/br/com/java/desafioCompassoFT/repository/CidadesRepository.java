@@ -8,7 +8,7 @@ import br.com.java.desafioCompassoFT.entity.Cidades;
 
 public interface CidadesRepository extends JpaRepository<Cidades, Long> {
 
-	List<Cidades> findByNomeCidade(String nomeCidade);
+	List<Cidades> findByNomeCidadeLike(String nomeCidade);
 
-	List<Cidades> findByEstado(String estado);
+	List<Cidades> findByEstadoLike(String estado);
 }

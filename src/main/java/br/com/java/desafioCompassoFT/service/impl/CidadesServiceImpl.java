@@ -26,12 +26,12 @@ public class CidadesServiceImpl implements CidadesService {
 	}
 
 	@Override
-	public List<Cidades> findByNomeCidade(String nomeCidade) {
-		return cidadesRepository.findByNomeCidade(nomeCidade);
+	public List<Cidades> findByNomeCidadeLike(String nomeCidade) {
+		return cidadesRepository.findByNomeCidadeLike("%"+nomeCidade+"%");
 	}
 
 	@Override
-	public List<Cidades> findByEstado(String estado) {
-		return cidadesRepository.findByEstado(estado);
+	public List<Cidades> findByEstadoLike(String estado) {
+		return cidadesRepository.findByEstadoLike("%"+estado+"%");
 	}
 }

@@ -46,7 +46,7 @@ public class IndexController {
 	public ModelAndView buscarCidades(Cidades cidades, @RequestParam(defaultValue = "") String nomeCidade) {
 
 		ModelAndView mv = new ModelAndView("/buscar/buscarCidades");
-		mv.addObject("cidades", cidadesService.findByNomeCidade(nomeCidade));
+		mv.addObject("cidades", cidadesService.findByNomeCidadeLike(nomeCidade));
 
 		return mv;
 	}
@@ -55,7 +55,7 @@ public class IndexController {
 	public ModelAndView buscarEstado(Cidades cidades, @RequestParam(defaultValue = "") String estado) {
 
 		ModelAndView mv = new ModelAndView("/buscar/buscarCidades");
-		mv.addObject("cidades", cidadesService.findByEstado(estado));
+		mv.addObject("cidades", cidadesService.findByEstadoLike(estado));
 
 		return mv;
 	}
