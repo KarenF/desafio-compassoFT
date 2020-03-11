@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.java.desafioCompassoFT.entity.Cliente;
+import br.com.java.desafioCompassoFT.service.CidadesService;
 import br.com.java.desafioCompassoFT.service.ClienteService;
 
 @Controller
@@ -20,10 +21,16 @@ public class ClienteController {
 
 	@Autowired
 	private ClienteService clienteService;
-
+	
+	@Autowired
+	private CidadesService cidadesService;
+	
 	@RequestMapping(value = "/cadastrarCliente", method = RequestMethod.GET)
-	public String form() {
-		return "cadastrar/cadastrarCliente";
+	public ModelAndView form() {
+		ModelAndView mv = new ModelAndView("/cadastrar/cadastrarCliente");
+		mv.addObject("cidades", cidadesService.findAll());
+		
+		return mv;
 	}
 
 	@RequestMapping(value = "/cadastrarCliente", method = RequestMethod.POST)

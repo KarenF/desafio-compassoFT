@@ -53,17 +53,30 @@
 					Data de Nascimento: <input type="date" value=""
 						name="dataNascimento" />
 				</div>
-				<div class="input-field col s5">
-					Cidade: <input type="text" value="" name="cidade"
-						placeholder="Cidade do Cliente" />
-				</div>
+
+
+
+
 			</div>
 			<button class="waves-effect waves-light btn" type="submit">Salvar</button>
 		</form>
+
 	</div>
+
+	<table class="container">
+		<thead>
+			<tr>
+				<th>Nome da Cidade</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="cidades : ${cidades}">
+				<td><span th:text="${cidades.nomeCidade}"></span></td>
+			</tr>
+		</tbody>
+	</table>
 
 	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 
 </body>
-
 </html>
