@@ -17,7 +17,7 @@ public interface CidadesService {
 	
 	Cidades findByNomeCidade(String nomeCidade);
 	
-	List<Cidades> findByNomeCidadeLike(String nomeCidade);
+	List<Cidades> findByNomeCidadeContainingIgnoreCase(String nomeCidade);
 	
-	List<Cidades> findByEstadoLike(String estado);
+	List<Cidades> findByEstadoContainingIgnoreCase(String estado);
 }
