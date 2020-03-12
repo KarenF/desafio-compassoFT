@@ -1,34 +1,35 @@
 {{>header}}
 
-	<th:block th:include="mensagemValidacao"></th:block>
+<th:block th:include="mensagemValidacao"></th:block>
 
-	<div class="container cadastrar">
+<div class="container cadastrar">
 
-		<form method="post">
-			Nome do Cliente: <input type="text" value="" name="nomeCliente"
-				placeholder="Nome do Cliente" autofocus />
-			<div class="row">
-				<div class="input-field col s4">
-					Gênero: <input type="text" value="" name="genero"
-						placeholder="Gênero" />
-				</div>
-				<!--
+	<form method="post">
+		Nome do Cliente: <input type="text" value="" name="nomeCliente"
+			placeholder="Nome do Cliente" autofocus />
+		<div class="row">
+			<div class="input-field col s4">
+				Gênero: <input type="text" value="" name="genero"
+					placeholder="Gênero" />
+			</div>
+			<!--
 				<div class="input-field col s3">
 					Data de Nascimento: <input type="date" value=""
 						name="dataNascimento" />
 				</div>
 				 -->
-				<div class="input-field col s5">
-					Cidade: <select style="display: block !important">
-						<option value="">Escolha a Cidade</option>
-						<option th:each="cidades : ${cidades}" th:value="${cidades.id}"
-							th:utext="${cidades.id} + ' - ' + ${cidades.nomeCidade} + ' - ' + ${cidades.estado}" />
-					</select>
-				</div>
+			<div class="input-field col s5">
+				Cidade: <select style="display: block !important">
+					<option value="">Escolha a Cidade</option>
+					{{#cidades}}
+						<option>{{nomeCidade}}</option>
+					{{/cidades}}
+				</select>
 			</div>
-			<button class="waves-effect waves-light btn" type="submit">Salvar</button>
-		</form>
+		</div>
+		<button class="waves-effect waves-light btn" type="submit">Salvar</button>
+	</form>
 
-	</div>
+</div>
 
 {{>footer}}
