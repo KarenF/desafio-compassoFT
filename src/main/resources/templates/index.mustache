@@ -1,0 +1,74 @@
+{{>header}}
+
+<div class="row index">
+	<div class="col s12">
+		<ul class="tabs">
+			<li class="tab col s3"><a class="active" href="#cidades">Cidades</a></li>
+			<li class="tab col s3"><a href="#cliente">Cliente</a></li>
+		</ul>
+	</div>
+	<div id="cidades" class="col s12">
+		<ul class="left">
+			<li><a href="/buscarCidades"
+				class="waves-effect waves-light btn"><i
+					class="material-icons left">search</i>Procurar Cidades</a></li>
+		</ul>
+		<table>
+			<thead>
+				<tr>
+					<th>Nome da Cidade</th>
+					<th>Estado</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#model.cidades}}
+				<tr>
+					<td>{{nomeCidade}}</td>
+					<td>{{estado}}</td>
+				</tr>
+				{{/model.cidades}}
+			</tbody>
+		</table>
+	</div>
+	<div id="cliente" class="col s12">
+		<ul class="right">
+			<li><a href="/buscarCliente"
+				class="waves-effect waves-light btn"><i
+					class="material-icons left">search</i>Procurar Cliente</a></li>
+		</ul>
+		<table>
+			<thead>
+				<tr>
+					<th>ID do Cliente</th>
+					<th>Nome do Cliente</th>
+					<th>Gênero</th>
+					<th>Data de Nascimento</th>
+					<th>Idade</th>
+					<th>Nome da Cidade</th>
+					<th>Atualizar</th>
+					<th>Deletar</th>
+				</tr>
+			</thead>
+			<tbody>
+			{{#model.cliente}}
+				<tr>
+					<td>{{idCliente}}</td>
+					<td>{{nomeCliente}}</td>
+					<td>{{genero}}</td>
+					<td>{{dataNascimento}}</td>
+					<td>{{idade}}</td>
+					<td>{{cidades}}</td>
+					<td><a class="waves-effect waves-light btn-small blue"
+						th:href="${(#mvc.url('CC#atualizarCliente').arg(0, cliente.idCliente)).build()}"><i
+							class="material-icons">edit</i></a></td>
+					<td><a class="waves-effect waves-light btn-small red"
+						th:href="${(#mvc.url('CC#deletarCliente').arg(0, cliente.idCliente)).build()}"><i
+							class="material-icons">delete</i></a></td>
+				</tr>
+				{{/model.cliente}}
+			</tbody>
+		</table>
+	</div>
+</div>
+
+{{>footer}}

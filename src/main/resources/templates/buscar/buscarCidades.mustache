@@ -1,0 +1,46 @@
+{{>header}}
+
+	<th:block th:include="mensagemValidacao"></th:block>
+
+	<div class="container cadastrar">
+		<form action="/buscarCidades" class="form-inline">
+			<div class="row">
+				<div class="input-field col s8">
+					<input type="text" class="form-control" name="nomeCidade"
+						placeholder="Nome da Cidade" autofocus />
+				</div>
+				<div class="input-field col s4">
+					<input type="submit" value="Procurar Cidades"
+						class="waves-effect waves-light btn" />
+				</div>
+			</div>
+		</form>
+		<form action="/buscarEstado" class="form-inline">
+			<div class="row">
+				<div class="input-field col s8">
+					<input type="text" class="form-control" name="estado"
+						placeholder="Estado" />
+				</div>
+				<div class="input-field col s4">
+					<input type="submit" value="Procurar Estado"
+						class="waves-effect waves-light btn" />
+				</div>
+			</div>
+		</form>
+		<table>
+			<thead>
+				<tr>
+					<th>Nome da Cidade</th>
+					<th>Estado</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="cidades : ${cidades}">
+					<td><span th:text="${cidades.nomeCidade}"></span></td>
+					<td><span th:text="${cidades.estado}"></span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+{{>footer}}
