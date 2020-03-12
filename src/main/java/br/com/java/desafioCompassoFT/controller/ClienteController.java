@@ -46,6 +46,7 @@ public class ClienteController {
 		Cidades cidades = cidadesService.findById(clienteModel.getId());
 		Cliente cliente = new Cliente();
 		
+		cliente.setIdCliente(clienteModel.getIdCliente());
 		cliente.setNomeCliente(clienteModel.getNomeCliente());
 		cliente.setGenero(clienteModel.getGenero());
 		cliente.setDataNascimento(clienteModel.getDataNascimento());
@@ -53,8 +54,6 @@ public class ClienteController {
 		
 		String idade = clienteService.findByIdade(clienteModel.getDataNascimento());
 		cliente.setIdade(idade);
-		
-		System.out.println("AAAAAAAAAAAAAAAAAa" + clienteModel.getNomeCliente() );
 		
 		clienteService.save(cliente);
 		attributes.addFlashAttribute("mensagem", "Cliente adicionado com sucesso");
