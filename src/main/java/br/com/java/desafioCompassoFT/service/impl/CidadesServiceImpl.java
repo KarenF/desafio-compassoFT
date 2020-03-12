@@ -17,12 +17,12 @@ public class CidadesServiceImpl implements CidadesService {
 
 	@Override
 	public Cidades save(Cidades cidades) {
-		return cidadesRepository.save(cidades);
+		return this.cidadesRepository.save(cidades);
 	}
 
 	@Override
 	public List<Cidades> findAll() {
-		return cidadesRepository.findAll();
+		return this.cidadesRepository.findAll();
 	}
 
 	@Override
@@ -32,16 +32,16 @@ public class CidadesServiceImpl implements CidadesService {
 	
 	@Override
 	public Cidades findByNomeCidade(String nomeCidade) {
-		return cidadesRepository.findByNomeCidade(nomeCidade);
+		return this.cidadesRepository.findByNomeCidade(nomeCidade);
 	}
 
 	@Override
 	public List<Cidades> findByEstadoContainingIgnoreCase(String estado) {
-		return cidadesRepository.findByEstadoContainingIgnoreCase(estado);
+		return this.cidadesRepository.findByEstadoContainingIgnoreCase(estado);
 	}
 
 	@Override
 	public List<Cidades> findByNomeCidadeContainingIgnoreCase(String nomeCidade) {
-		return cidadesRepository.findByNomeCidadeContainingIgnoreCase(nomeCidade);
+		return this.cidadesRepository.findByNomeCidadeContainingIgnoreCase(nomeCidade);
 	}
 }

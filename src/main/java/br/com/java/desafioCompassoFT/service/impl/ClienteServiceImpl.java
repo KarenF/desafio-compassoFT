@@ -20,22 +20,22 @@ public class ClienteServiceImpl implements ClienteService {
 
 	@Override
 	public Cliente save(Cliente cliente) {
-		return clienteRepository.save(cliente);
+		return this.clienteRepository.save(cliente);
 	}
 
 	@Override
 	public List<Cliente> findAll() {
-		return clienteRepository.findAll();
+		return this.clienteRepository.findAll();
 	}
 
 	@Override
 	public Cliente findByIdCliente(Long idCliente) {
-		return clienteRepository.findByIdCliente(idCliente);
+		return this.clienteRepository.findByIdCliente(idCliente);
 	}
 
 	@Override
 	public List<Cliente> findByNomeClienteContainingIgnoreCase(String nomeCliente) {
-		return clienteRepository.findByNomeClienteContainingIgnoreCase(nomeCliente);
+		return this.clienteRepository.findByNomeClienteContainingIgnoreCase(nomeCliente);
 	}
 
 	@Override
@@ -57,12 +57,12 @@ public class ClienteServiceImpl implements ClienteService {
 
 	@Override
 	public List<Cliente> findByCidades(Cidades cidades) {
-		return clienteRepository.findByCidades(cidades);
+		return this.clienteRepository.findByCidades(cidades);
 	}
 
 	@Override
 	public void delete(Cliente cliente) {
-		clienteRepository.delete(cliente);
+		this.clienteRepository.delete(cliente);
 	}
 
 	@Override
