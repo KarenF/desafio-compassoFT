@@ -39,14 +39,16 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="cliente : ${cliente}">
-					<td><span th:text="${cliente.idCliente}"></span></td>
-					<td><span th:text="${cliente.nomeCliente}"></span></td>
-					<td><span th:text="${cliente.genero}"></span></td>
-					<td><span th:text="${cliente.dataNascimento}"></span></td>
-					<td><span th:text="${cliente.idade}"></span></td>
-					<td><span th:text="${cliente.cidades}"></span></td>
-				</tr>
+				{{#cliente}}
+					<tr>
+						<td>{{idCliente}}</td>
+						<td>{{nomeCliente}}</td>
+						<td>{{genero}}</td>
+						<td>{{dataNascimento}}</td>
+						<td>{{idade}}</td>
+						<td>{{cidades}}</td>
+					</tr>
+				{{/cliente}}
 			</tbody>
 		</table>
 	</div>
