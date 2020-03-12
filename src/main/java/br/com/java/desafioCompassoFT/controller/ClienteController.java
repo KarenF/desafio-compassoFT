@@ -42,11 +42,10 @@ public class ClienteController {
 			attributes.addFlashAttribute("mensagem", "Verifique os campos");
 			return "redirect:/cadastrarCliente";
 		}
-		
-		Cidades cidades = cidadesService.findById(clienteModel.getId());
+		System.out.println(clienteModel);
+		Cidades cidades = cidadesService.findById(clienteModel.getCidades().getId());
 		Cliente cliente = new Cliente();
 		
-		cliente.setIdCliente(clienteModel.getIdCliente());
 		cliente.setNomeCliente(clienteModel.getNomeCliente());
 		cliente.setGenero(clienteModel.getGenero());
 		cliente.setDataNascimento(clienteModel.getDataNascimento());

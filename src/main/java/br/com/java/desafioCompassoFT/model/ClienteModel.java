@@ -14,7 +14,6 @@ public class ClienteModel {
 	private LocalDate dataNascimento;
 	private String idade;
 
-	private Long id;
 	private Cidades cidades;
 
 }
