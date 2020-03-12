@@ -12,7 +12,7 @@ public interface ClienteRepository extends JpaRepository<Cliente, Long> {
 
 	Cliente findByIdCliente(Long idCliente);
 
-	List<Cliente> findByNomeClienteLike(String nomeCliente);
+	List<Cliente> findByNomeClienteContainingIgnoreCase(String nomeCliente);
 
 	String findByIdade(LocalDate dataNascimento);
 	

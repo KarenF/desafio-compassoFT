@@ -19,7 +19,7 @@ public interface ClienteService {
 	
 	Cliente findByIdCliente(Long idCliente);
 	
-	List<Cliente> findByNomeClienteLike(String nomeCliente);
+	List<Cliente> findByNomeClienteContainingIgnoreCase(String nomeCliente);
 	
 	String findByIdade(LocalDate dataNascimento) throws Exception;
 	

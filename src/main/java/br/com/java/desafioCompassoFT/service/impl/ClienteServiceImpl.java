@@ -34,8 +34,8 @@ public class ClienteServiceImpl implements ClienteService {
 	}
 
 	@Override
-	public List<Cliente> findByNomeClienteLike(String nomeCliente) {
-		return clienteRepository.findByNomeClienteLike("%"+nomeCliente+"%");
+	public List<Cliente> findByNomeClienteContainingIgnoreCase(String nomeCliente) {
+		return clienteRepository.findByNomeClienteContainingIgnoreCase(nomeCliente);
 	}
 
 	@Override
