@@ -1,6 +1,6 @@
 package br.com.java.desafioCompassoFT.service;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -21,9 +21,7 @@ public interface ClienteService {
 	
 	List<Cliente> findByNomeClienteContainingIgnoreCase(String nomeCliente);
 	
-	String findByIdade(LocalDate dataNascimento) throws Exception;
-	
-	List<Cliente> findByCidades(Cidades cidades);
+	String findByIdade(LocalDateTime dataNascimento) throws Exception;
 	
 	void delete(Cliente cliente);
 }

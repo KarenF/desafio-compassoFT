@@ -21,10 +21,6 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "cidades")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@DynamicUpdate
 public class Cidades implements Serializable {
 
 	/**
@@ -42,7 +38,47 @@ public class Cidades implements Serializable {
 	@NotBlank
 	@Column(nullable = false)
 	private String estado;
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "cidades")
+	
+	@OneToMany(fetch = FetchType.LAZY)
 	private List<Cliente> cliente;
+
+	
+	
+	
+	
+	public Long getId() {
+		return id;
+	}
+
+	
+	
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getNomeCidade() {
+		return nomeCidade;
+	}
+
+	public void setNomeCidade(String nomeCidade) {
+		this.nomeCidade = nomeCidade;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	public List<Cliente> getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(List<Cliente> cliente) {
+		this.cliente = cliente;
+	}
+	
+	
 }

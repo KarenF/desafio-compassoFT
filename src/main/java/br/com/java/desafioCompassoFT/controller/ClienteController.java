@@ -1,5 +1,8 @@
 package br.com.java.desafioCompassoFT.controller;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 
@@ -36,25 +39,35 @@ public class ClienteController {
 	}
 
 	@RequestMapping(value = "/cadastrarCliente", method = RequestMethod.POST)
-	public String form(@Valid ClienteModel clienteModel, BindingResult result, RedirectAttributes attributes) throws Exception {
-
-		if (result.hasErrors()) {
-			attributes.addFlashAttribute("mensagem", "Verifique os campos");
-			return "redirect:/cadastrarCliente";
-		}
-		System.out.println(clienteModel);
-		Cidades cidades = cidadesService.findById(clienteModel.getCidades().getId());
+	public String form(ClienteModel clienteModel, BindingResult result, RedirectAttributes attributes) throws Exception {
+		
+		String str = result.getFieldValue("dataNascimento").toString() + " 00:00";  
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"); 
+		LocalDateTime dateTime = LocalDateTime.parse(str, formatter);
+		
+//		LocalDateTime teste = (LocalDateTime) ; 
+//		if (result.hasErrors()) {
+//			attributes.addFlashAttribute("mensagem", "Verifique os campos");
+//			return "redirect:/cadastrarCliente";
+//		}
+		
+		Cidades cidades = cidadesService.findById(clienteModel.getIdCidade());
 		Cliente cliente = new Cliente();
 		
 		cliente.setNomeCliente(clienteModel.getNomeCliente());
 		cliente.setGenero(clienteModel.getGenero());
-		cliente.setDataNascimento(clienteModel.getDataNascimento());
-		cliente.setCidades(cidades);
+		cliente.setDataNascimento(dateTime);
 		
-		String idade = clienteService.findByIdade(clienteModel.getDataNascimento());
+		String idade = clienteService.findByIdade(dateTime);
 		cliente.setIdade(idade);
 		
-		clienteService.save(cliente);
+		System.out.println("AAAAAAAAAAAAA : " + result.getFieldValue("dataNascimento").toString() + " 00:00" + "-----" + dateTime);
+		
+		Cliente salvo = clienteService.save(cliente);
+		cidades.getCliente().add(salvo); 
+		Cidades cidadesalva = cidadesService.save(cidades); 
+		
+		Cidades cidadeCarregada = cidadesService.findById(cidadesalva.getId()); 
 		attributes.addFlashAttribute("mensagem", "Cliente adicionado com sucesso");
 		return "redirect:/cadastrarCliente";
 	}

@@ -11,8 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.com.java.desafioCompassoFT.entity.Cidades;
 import br.com.java.desafioCompassoFT.entity.Cliente;
-import br.com.java.desafioCompassoFT.errors.BadRequest;
-import br.com.java.desafioCompassoFT.errors.NotFoundException;
 import br.com.java.desafioCompassoFT.model.IndexModel;
 import br.com.java.desafioCompassoFT.service.CidadesService;
 import br.com.java.desafioCompassoFT.service.ClienteService;
@@ -78,12 +76,13 @@ public class IndexController {
 		if (idCliente.matches("[0-9]*")) {
 			cliente = this.clienteService.findByIdCliente(Long.parseLong(idCliente));
 			if (idCliente.equals(null)) {
-				throw new NotFoundException("ID não consta no banco de dados");
+				//throw new NotFoundException("ID não consta no banco de dados");
 			}
 			mv.addObject("cliente", cliente);
 			return mv;
 		} else {
-			throw new BadRequest("O ID deve ser um número");
+			//throw new BadRequest("O ID deve ser um número");
 		}
+		return null; 
 	}
 }

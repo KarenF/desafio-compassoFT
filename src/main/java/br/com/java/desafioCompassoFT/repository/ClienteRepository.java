@@ -1,6 +1,6 @@
 package br.com.java.desafioCompassoFT.repository;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,7 +14,7 @@ public interface ClienteRepository extends JpaRepository<Cliente, Long> {
 
 	List<Cliente> findByNomeClienteContainingIgnoreCase(String nomeCliente);
 
-	String findByIdade(LocalDate dataNascimento);
+	String findByIdade(LocalDateTime dataNascimento);
 	
-	List<Cliente> findByCidades(Cidades cidades);
+//	List<Cliente> findByCidades(Cidades cidades);
 }

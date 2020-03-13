@@ -11,7 +11,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import br.com.java.desafioCompassoFT.entity.Cidades;
 import lombok.Data;
 
-@Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ClienteDTO {
 
@@ -26,4 +25,52 @@ public class ClienteDTO {
 	private int idade;
 
 	private Cidades cidades;
+
+	public Long getIdCliente() {
+		return idCliente;
+	}
+
+	public void setIdCliente(Long idCliente) {
+		this.idCliente = idCliente;
+	}
+
+	public String getNomeCliente() {
+		return nomeCliente;
+	}
+
+	public void setNomeCliente(String nomeCliente) {
+		this.nomeCliente = nomeCliente;
+	}
+
+	public String getGenero() {
+		return genero;
+	}
+
+	public void setGenero(String genero) {
+		this.genero = genero;
+	}
+
+	public LocalDate getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(LocalDate dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
+	public int getIdade() {
+		return idade;
+	}
+
+	public void setIdade(int idade) {
+		this.idade = idade;
+	}
+
+	public Cidades getCidades() {
+		return cidades;
+	}
+
+	public void setCidades(Cidades cidades) {
+		this.cidades = cidades;
+	}
 }

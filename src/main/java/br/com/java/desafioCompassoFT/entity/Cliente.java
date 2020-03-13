@@ -2,12 +2,14 @@ package br.com.java.desafioCompassoFT.entity;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -19,15 +21,9 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "cliente")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 @DynamicUpdate
 public class Cliente implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -648906708267780745L;
 
 	@Id
@@ -40,8 +36,47 @@ public class Cliente implements Serializable {
 	@NotBlank
 	@Column(nullable = false)
 	private String genero;
-	private LocalDate dataNascimento;
+	private LocalDateTime dataNascimento;
 	private String idade;
 
-	private Cidades cidades;
-}
+	public Long getIdCliente() {
+		return idCliente;
+	}
+
+	public void setIdCliente(Long idCliente) {
+		this.idCliente = idCliente;
+	}
+
+	public String getNomeCliente() {
+		return nomeCliente;
+	}
+
+	public void setNomeCliente(String nomeCliente) {
+		this.nomeCliente = nomeCliente;
+	}
+
+	public String getGenero() {
+		return genero;
+	}
+
+	public void setGenero(String genero) {
+		this.genero = genero;
+	}
+
+	public LocalDateTime getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(LocalDateTime dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
+	public String getIdade() {
+		return idade;
+	}
+
+	public void setIdade(String idade) {
+		this.idade = idade;
+	}
+
+	}

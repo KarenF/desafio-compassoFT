@@ -1,7 +1,7 @@
 package br.com.java.desafioCompassoFT.service.impl;
 
-import java.time.LocalDate;
-import java.time.Period;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,26 +39,29 @@ public class ClienteServiceImpl implements ClienteService {
 	}
 
 	@Override
-	public String findByIdade(LocalDate dataNascimento) throws Exception {
+	public String findByIdade(LocalDateTime dataNascimento) throws Exception {
 
-		LocalDate now = LocalDate.now();
+		LocalDateTime now = LocalDateTime.now();
 		String idade;
-		
-		if(dataNascimento.isAfter(now)) {
+
+		if (dataNascimento.isAfter(now)) {
 			idade = "Ainda não nasceu";
 			return idade;
 		}
+
+		long anos = ChronoUnit.YEARS.between(dataNascimento, now);
+        long meses = ChronoUnit.MONTHS.between(dataNascimento, now);
+        long dias = ChronoUnit.DAYS.between(dataNascimento, now);
 		
-		Period diff = Period.between(dataNascimento, now);
-		idade = diff.getYears() + " anos " + diff.getMonths() + " meses e " + diff.getDays() + " dias";
+		idade = anos + " anos " + meses + " meses e " + dias + " dias";
 
 		return idade;
 	}
 
-	@Override
-	public List<Cliente> findByCidades(Cidades cidades) {
-		return this.clienteRepository.findByCidades(cidades);
-	}
+//	@Override
+//	public List<Cliente> findByCidades(Cidades cidades) {
+//		return this.clienteRepository.findByCidades(cidades);
+//	}
 
 	@Override
 	public void delete(Cliente cliente) {
@@ -67,6 +70,6 @@ public class ClienteServiceImpl implements ClienteService {
 
 	@Override
 	public Cliente findById(Long id) {
-		return this.clienteRepository.findById(id).get(); 
+		return this.clienteRepository.findById(id).get();
 	}
 }
