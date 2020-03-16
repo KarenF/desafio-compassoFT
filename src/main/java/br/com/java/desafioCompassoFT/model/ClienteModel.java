@@ -9,7 +9,7 @@ public class ClienteModel {
 	private Long idCliente;
 	private String nomeCliente;
 	private String genero;
-	private LocalDateTime  dataNascimento;
+	private LocalDateTime dataNascimento;
 	private String idade;
 
 	private Long idCidade;
@@ -61,7 +61,4 @@ public class ClienteModel {
 	public void setIdCidade(Long idCidade) {
 		this.idCidade = idCidade;
 	}
-	
-	
-
 }

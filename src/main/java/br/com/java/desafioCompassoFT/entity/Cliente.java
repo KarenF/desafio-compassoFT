@@ -14,6 +14,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 import org.hibernate.annotations.DynamicUpdate;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -36,6 +37,7 @@ public class Cliente implements Serializable {
 	@NotBlank
 	@Column(nullable = false)
 	private String genero;
+	@DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
 	private LocalDateTime dataNascimento;
 	private String idade;
 

@@ -52,14 +52,14 @@
 				</tr>
 			</thead>
 			<tbody>
-			{{#model.cliente}}
+			{{#model.clientes}}
 				<tr>
 					<td>{{idCliente}}</td>
 					<td>{{nomeCliente}}</td>
 					<td>{{genero}}</td>
 					<td>{{dataNascimento}}</td>
 					<td>{{idade}}</td>
-					<td>{{cidades}}</td>
+					<td></td>
 					<td><a class="waves-effect waves-light btn-small blue"
 						th:href="${(#mvc.url('CC#atualizarCliente').arg(0, cliente.idCliente)).build()}"><i
 							class="material-icons">edit</i></a></td>
@@ -67,7 +67,7 @@
 						th:href="${(#mvc.url('CC#deletarCliente').arg(0, cliente.idCliente)).build()}"><i
 							class="material-icons">delete</i></a></td>
 				</tr>
-				{{/model.cliente}}
+				{{/model.clientes}}
 			</tbody>
 		</table>
 	</div>
