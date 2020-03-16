@@ -42,16 +42,19 @@ public class ClienteServiceImpl implements ClienteService {
 	public String findByIdade(LocalDateTime dataNascimento) throws Exception {
 
 		LocalDateTime now = LocalDateTime.now();
+		LocalDateTime tempDateTime = LocalDateTime.from(dataNascimento);
 		String idade;
 
 		if (dataNascimento.isAfter(now)) {
 			idade = "Ainda não nasceu";
 			return idade;
 		}
-
-		long anos = ChronoUnit.YEARS.between(dataNascimento, now);
-        long meses = ChronoUnit.MONTHS.between(dataNascimento, now);
-        long dias = ChronoUnit.DAYS.between(dataNascimento, now);
+		
+		long anos = tempDateTime.until(now, ChronoUnit.YEARS);
+		tempDateTime = tempDateTime.plusYears(anos);
+		long meses = tempDateTime.until(now, ChronoUnit.MONTHS);
+		tempDateTime = tempDateTime.plusMonths(meses);
+		long dias = tempDateTime.until(now, ChronoUnit.DAYS);
 		
 		idade = anos + " anos " + meses + " meses e " + dias + " dias";
 
