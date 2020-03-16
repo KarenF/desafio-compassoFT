@@ -5,7 +5,7 @@
 	<th:block th:include="mensagemValidacao"></th:block>
 
 	<div class="container cadastrar">
-		<form action="/buscarCliente" class="form-inline">
+		<form action="/procurarCliente" class="form-inline">
 			<div class="row">
 				<div class="input-field col s8">
 					<input type="text" class="form-control" name="nomeCliente"
@@ -17,10 +17,10 @@
 				</div>
 			</div>
 		</form>
-		<form action="/buscarIdCliente" class="form-inline">
+		<form action="/procurarId" class="form-inline">
 			<div class="row">
 				<div class="input-field col s8">
-					<input type="text" class="form-control" name="idCliente"
+					<input type="text" class="form-control" name="id"
 						placeholder="Procurar pelo Id do Cliente" pattern="[0-9]" title="Digite apenas valores numéricos"/>
 				</div>
 				<div class="input-field col s4">
@@ -43,12 +43,12 @@
 			<tbody>
 				{{#cliente}}
 					<tr>
-						<td>{{idCliente}}</td>
+						<td>{{id}}</td>
 						<td>{{nomeCliente}}</td>
 						<td>{{genero}}</td>
 						<td>{{dataNascimento}}</td>
 						<td>{{idade}}</td>
-						<td>{{cidades}}</td>
+						<td></td>
 					</tr>
 				{{/cliente}}
 			</tbody>

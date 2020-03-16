@@ -20,8 +20,8 @@ public class Cliente {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idCliente", updatable = false, nullable = false)
-	private Long idCliente;
+	@Column(name = "id", updatable = false, nullable = false)
+	private Long id;
 	@NotBlank
 	@Column(nullable = false)
 	private String nomeCliente;
@@ -32,12 +32,12 @@ public class Cliente {
 	private LocalDateTime dataNascimento;
 	private String idade;
 
-	public Long getIdCliente() {
-		return idCliente;
+	public Long getId() {
+		return id;
 	}
 
-	public void setIdCliente(Long idCliente) {
-		this.idCliente = idCliente;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getNomeCliente() {
@@ -71,5 +71,4 @@ public class Cliente {
 	public void setIdade(String idade) {
 		this.idade = idade;
 	}
-
 }

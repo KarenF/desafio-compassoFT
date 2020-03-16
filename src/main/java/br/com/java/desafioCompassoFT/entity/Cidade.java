@@ -15,9 +15,9 @@ import javax.validation.constraints.NotBlank;
 import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
-@Table(name = "cidades")
+@Table(name = "cidade")
 @DynamicUpdate
-public class Cidades {
+public class Cidade {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,7 +31,7 @@ public class Cidades {
 	private String estado;
 	
 	@OneToMany(fetch = FetchType.LAZY)
-	private List<Cliente> cliente;
+	private List<Cliente> clientes;
 	
 	public Long getId() {
 		return id;
@@ -58,10 +58,10 @@ public class Cidades {
 	}
 
 	public List<Cliente> getCliente() {
-		return cliente;
+		return clientes;
 	}
 
-	public void setCliente(List<Cliente> cliente) {
-		this.cliente = cliente;
+	public void setCliente(List<Cliente> clientes) {
+		this.clientes = clientes;
 	}
 }

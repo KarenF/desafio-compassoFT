@@ -28,8 +28,8 @@ public class ClienteServiceImpl implements ClienteService {
 	}
 
 	@Override
-	public Cliente findByIdCliente(Long idCliente) {
-		return this.clienteRepository.findByIdCliente(idCliente);
+	public Cliente findById(Long id) {
+		return this.clienteRepository.findById(id).get();
 	}
 
 	@Override
@@ -63,10 +63,5 @@ public class ClienteServiceImpl implements ClienteService {
 	@Override
 	public void delete(Cliente cliente) {
 		this.clienteRepository.delete(cliente);
-	}
-
-	@Override
-	public Cliente findById(Long id) {
-		return this.clienteRepository.findById(id).get();
 	}
 }

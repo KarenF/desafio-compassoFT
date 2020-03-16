@@ -6,11 +6,11 @@
 
 	<div class="container cadastrar">
 		<form action="#"
-			th:action="@{/atualizarCliente/{idCliente}(idCliente=${cliente.idCliente})}"
+			th:action="@{/atualizarCliente/{id}(id=${cliente.id})}"
 			th:object="${cliente}" method="post">
 			<div class="row">
 				<div class="input-field col s2">
-					ID do Cliente: <input type="text" th:field="*{idCliente}" readonly />
+					ID do Cliente: <input type="text" th:field="*{id}" readonly />
 				</div>
 				<div class="input-field col s12">
 					Nome do Cliente: <input type="text" th:field="*{nomeCliente}" />

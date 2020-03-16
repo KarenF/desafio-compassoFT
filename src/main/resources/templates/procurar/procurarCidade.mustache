@@ -5,7 +5,7 @@
 	<th:block th:include="mensagemValidacao"></th:block>
 
 	<div class="container cadastrar">
-		<form action="/buscarCidades" class="form-inline">
+		<form action="/procurarCidade" class="form-inline">
 			<div class="row">
 				<div class="input-field col s8">
 					<input type="text" class="form-control" name="nomeCidade"
@@ -17,7 +17,7 @@
 				</div>
 			</div>
 		</form>
-		<form action="/buscarEstado" class="form-inline">
+		<form action="/procurarEstado" class="form-inline">
 			<div class="row">
 				<div class="input-field col s8">
 					<input type="text" class="form-control" name="estado"
@@ -37,12 +37,12 @@
 				</tr>
 			</thead>
 			<tbody>
-				{{#cidades}}
+				{{#cidade}}
 					<tr>
 						<td>{{nomeCidade}}</span></td>
 						<td>{{estado}}</td>
 					</tr>
-				{{/cidades}}
+				{{/cidade}}
 			</tbody>
 		</table>
 	</div>

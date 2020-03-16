@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import br.com.java.desafioCompassoFT.entity.Cliente;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class CidadesDTO {
+public class CidadeDTO {
 
 	private Long id;
 	@NotBlank

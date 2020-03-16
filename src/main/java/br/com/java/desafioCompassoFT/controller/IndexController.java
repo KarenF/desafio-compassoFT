@@ -9,17 +9,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.com.java.desafioCompassoFT.entity.Cidades;
+import br.com.java.desafioCompassoFT.entity.Cidade;
 import br.com.java.desafioCompassoFT.entity.Cliente;
+import br.com.java.desafioCompassoFT.errors.BadRequest;
+import br.com.java.desafioCompassoFT.errors.NotFoundException;
 import br.com.java.desafioCompassoFT.model.IndexModel;
-import br.com.java.desafioCompassoFT.service.CidadesService;
+import br.com.java.desafioCompassoFT.service.CidadeService;
 import br.com.java.desafioCompassoFT.service.ClienteService;
 
 @Controller
 public class IndexController {
 
 	@Autowired
-	CidadesService cidadesService;
+	CidadeService cidadeService;
 
 	@Autowired
 	ClienteService clienteService;
@@ -28,7 +30,7 @@ public class IndexController {
 	public ModelAndView lista() {
 		ModelAndView mv = new ModelAndView("index");
 
-		List<Cidades> cidades = cidadesService.findAll();
+		List<Cidade> cidades = cidadeService.findAll();
 		List<Cliente> clientes = clienteService.findAll();
 
 		IndexModel model = new IndexModel();
@@ -40,49 +42,48 @@ public class IndexController {
 		return mv;
 	}
 
-	@RequestMapping(value = "/buscarCidades", method = RequestMethod.GET)
-	public ModelAndView buscarCidades(Cidades cidades, @RequestParam(defaultValue = "") String nomeCidade) {
+	@RequestMapping(value = "/procurarCidade", method = RequestMethod.GET)
+	public ModelAndView procurarCidade(Cidade cidade, @RequestParam(defaultValue = "") String nomeCidade) {
 
-		ModelAndView mv = new ModelAndView("/buscar/buscarCidades");
-		mv.addObject("cidades", cidadesService.findByNomeCidadeContainingIgnoreCase(nomeCidade));
-
-		return mv;
-	}
-
-	@RequestMapping(value = "/buscarEstado", method = RequestMethod.GET)
-	public ModelAndView buscarEstado(Cidades cidades, @RequestParam(defaultValue = "") String estado) {
-
-		ModelAndView mv = new ModelAndView("/buscar/buscarCidades");
-		mv.addObject("cidades", cidadesService.findByEstadoContainingIgnoreCase(estado));
+		ModelAndView mv = new ModelAndView("/procurar/procurarCidade");
+		mv.addObject("cidade", cidadeService.findByNomeCidadeContainingIgnoreCase(nomeCidade));
 
 		return mv;
 	}
 
-	@RequestMapping(value = "/buscarCliente", method = RequestMethod.GET)
-	public ModelAndView buscarCliente(Cliente cliente, @RequestParam(defaultValue = "") String nomeCliente) {
+	@RequestMapping(value = "/procurarEstado", method = RequestMethod.GET)
+	public ModelAndView procurarEstado(Cidade cidade, @RequestParam(defaultValue = "") String estado) {
 
-		ModelAndView mv = new ModelAndView("/buscar/buscarCliente");
+		ModelAndView mv = new ModelAndView("/procurar/procurarCidade");
+		mv.addObject("cidade", cidadeService.findByEstadoContainingIgnoreCase(estado));
+
+		return mv;
+	}
+
+	@RequestMapping(value = "/procurarCliente", method = RequestMethod.GET)
+	public ModelAndView procurarCliente(Cliente cliente, @RequestParam(defaultValue = "") String nomeCliente) {
+
+		ModelAndView mv = new ModelAndView("/procurar/procurarCliente");
 		mv.addObject("cliente", clienteService.findByNomeClienteContainingIgnoreCase(nomeCliente));
 
 		return mv;
 	}
 
-	@RequestMapping(value = "/buscarIdCliente", method = RequestMethod.GET)
-	public ModelAndView buscarIdCliente(@RequestParam(defaultValue = "") String idCliente) {
+	@RequestMapping(value = "/procurarId", method = RequestMethod.GET)
+	public ModelAndView procurarId(@RequestParam(defaultValue = "") String id) {
 
-		ModelAndView mv = new ModelAndView("/buscar/buscarCliente");
+		ModelAndView mv = new ModelAndView("/procurar/procurarCliente");
 
 		Cliente cliente = new Cliente();
-		if (idCliente.matches("[0-9]*")) {
-			cliente = this.clienteService.findByIdCliente(Long.parseLong(idCliente));
-			if (idCliente.equals(null)) {
-				//throw new NotFoundException("ID não consta no banco de dados");
+		if (id.matches("[0-9]*")) {
+			cliente = this.clienteService.findById(Long.parseLong(id));
+			if (id.equals(null)) {
+				throw new NotFoundException("ID não consta no banco de dados");
 			}
 			mv.addObject("cliente", cliente);
 			return mv;
 		} else {
-			//throw new BadRequest("O ID deve ser um número");
+			throw new BadRequest("O ID deve ser um número");
 		}
-		return null; 
 	}
 }

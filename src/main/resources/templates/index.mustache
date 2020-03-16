@@ -5,15 +5,15 @@
 <div class="row index">
 	<div class="col s12">
 		<ul class="tabs">
-			<li class="tab col s3"><a class="active" href="#cidades">Cidades</a></li>
-			<li class="tab col s3"><a href="#cliente">Cliente</a></li>
+			<li class="tab col s3"><a class="active" href="#cidade">Cidades</a></li>
+			<li class="tab col s3"><a href="#cliente">Clientes</a></li>
 		</ul>
 	</div>
-	<div id="cidades" class="col s12">
+	<div id="cidade" class="col s12">
 		<ul class="left">
-			<li><a href="/buscarCidades"
+			<li><a href="/procurarCidade"
 				class="waves-effect waves-light btn"><i
-					class="material-icons left">search</i>Procurar Cidades</a></li>
+					class="material-icons left">search</i>Procurar Cidade</a></li>
 		</ul>
 		<table>
 			<thead>
@@ -34,7 +34,7 @@
 	</div>
 	<div id="cliente" class="col s12">
 		<ul class="right">
-			<li><a href="/buscarCliente"
+			<li><a href="/procurarCliente"
 				class="waves-effect waves-light btn"><i
 					class="material-icons left">search</i>Procurar Cliente</a></li>
 		</ul>
@@ -54,17 +54,17 @@
 			<tbody>
 			{{#model.clientes}}
 				<tr>
-					<td>{{idCliente}}</td>
+					<td>{{id}}</td>
 					<td>{{nomeCliente}}</td>
 					<td>{{genero}}</td>
 					<td>{{dataNascimento}}</td>
 					<td>{{idade}}</td>
 					<td></td>
 					<td><a class="waves-effect waves-light btn-small blue"
-						th:href="${(#mvc.url('CC#atualizarCliente').arg(0, cliente.idCliente)).build()}"><i
+						th:href="${(#mvc.url('CC#atualizarCliente').arg(0, cliente.id)).build()}"><i
 							class="material-icons">edit</i></a></td>
 					<td><a class="waves-effect waves-light btn-small red"
-						th:href="${(#mvc.url('CC#deletarCliente').arg(0, cliente.idCliente)).build()}"><i
+						th:href="${(#mvc.url('CC#deletarCliente').arg(0, cliente.id)).build()}"><i
 							class="material-icons">delete</i></a></td>
 				</tr>
 				{{/model.clientes}}

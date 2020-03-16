@@ -2,19 +2,19 @@ package br.com.java.desafioCompassoFT.model;
 
 import java.util.List;
 
-import br.com.java.desafioCompassoFT.entity.Cidades;
+import br.com.java.desafioCompassoFT.entity.Cidade;
 import br.com.java.desafioCompassoFT.entity.Cliente;
 
 public class IndexModel {
 
-	List<Cidades> cidades;
+	List<Cidade> cidades;
 	List<Cliente> clientes;
 	
-	public List<Cidades> getCidades() {
+	public List<Cidade> getCidades() {
 		return cidades;
 	}
 	
-	public void setCidades(List<Cidades> cidades) {
+	public void setCidades(List<Cidade> cidades) {
 		this.cidades = cidades;
 	}
 	

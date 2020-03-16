@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 public class ClienteModel {
 
-	private Long idCliente;
+	private Long id;
 	private String nomeCliente;
 	private String genero;
 	private LocalDateTime dataNascimento;
@@ -12,12 +12,12 @@ public class ClienteModel {
 
 	private Long idCidade;
 
-	public Long getIdCliente() {
-		return idCliente;
+	public Long getId() {
+		return id;
 	}
 
-	public void setIdCliente(Long idCliente) {
-		this.idCliente = idCliente;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getNomeCliente() {
