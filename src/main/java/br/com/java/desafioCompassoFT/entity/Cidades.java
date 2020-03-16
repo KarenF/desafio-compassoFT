@@ -1,6 +1,5 @@
 package br.com.java.desafioCompassoFT.entity;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -18,12 +17,7 @@ import org.hibernate.annotations.DynamicUpdate;
 @Entity
 @Table(name = "cidades")
 @DynamicUpdate
-public class Cidades implements Serializable {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -5076998331643312343L;
+public class Cidades {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

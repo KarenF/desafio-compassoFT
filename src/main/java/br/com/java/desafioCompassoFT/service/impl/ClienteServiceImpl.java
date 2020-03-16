@@ -7,7 +7,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.java.desafioCompassoFT.entity.Cidades;
 import br.com.java.desafioCompassoFT.entity.Cliente;
 import br.com.java.desafioCompassoFT.repository.ClienteRepository;
 import br.com.java.desafioCompassoFT.service.ClienteService;
@@ -60,11 +59,6 @@ public class ClienteServiceImpl implements ClienteService {
 
 		return idade;
 	}
-
-//	@Override
-//	public List<Cliente> findByCidades(Cidades cidades) {
-//		return this.clienteRepository.findByCidades(cidades);
-//	}
 
 	@Override
 	public void delete(Cliente cliente) {
