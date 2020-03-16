@@ -9,7 +9,6 @@ import org.hibernate.validator.constraints.Length;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import br.com.java.desafioCompassoFT.entity.Cidades;
-import lombok.Data;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ClienteDTO {

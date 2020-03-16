@@ -2,8 +2,6 @@ package br.com.java.desafioCompassoFT.model;
 
 import java.time.LocalDateTime;
 
-import lombok.Data;
-
 public class ClienteModel {
 
 	private Long idCliente;

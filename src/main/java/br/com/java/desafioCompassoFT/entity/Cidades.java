@@ -15,12 +15,9 @@ import javax.validation.constraints.NotBlank;
 
 import org.hibernate.annotations.DynamicUpdate;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 @Entity
 @Table(name = "cidades")
+@DynamicUpdate
 public class Cidades implements Serializable {
 
 	/**
@@ -41,16 +38,10 @@ public class Cidades implements Serializable {
 	
 	@OneToMany(fetch = FetchType.LAZY)
 	private List<Cliente> cliente;
-
-	
-	
-	
 	
 	public Long getId() {
 		return id;
 	}
-
-	
 	
 	public void setId(Long id) {
 		this.id = id;
@@ -79,6 +70,4 @@ public class Cidades implements Serializable {
 	public void setCliente(List<Cliente> cliente) {
 		this.cliente = cliente;
 	}
-	
-	
 }

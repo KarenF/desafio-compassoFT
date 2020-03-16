@@ -4,8 +4,6 @@ import java.util.List;
 
 import br.com.java.desafioCompassoFT.entity.Cidades;
 import br.com.java.desafioCompassoFT.entity.Cliente;
-import lombok.Data;
-
 
 public class IndexModel {
 
@@ -26,5 +24,4 @@ public class IndexModel {
 	public void setClientes(List<Cliente> clientes) {
 		this.clientes = clientes;
 	}
-	
 }
