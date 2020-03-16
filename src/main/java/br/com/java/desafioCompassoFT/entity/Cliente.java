@@ -1,6 +1,5 @@
 package br.com.java.desafioCompassoFT.entity;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -17,9 +16,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 @Table(name = "cliente")
 @DynamicUpdate
-public class Cliente implements Serializable {
-
-	private static final long serialVersionUID = -648906708267780745L;
+public class Cliente {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -75,4 +72,4 @@ public class Cliente implements Serializable {
 		this.idade = idade;
 	}
 
-	}
+}
