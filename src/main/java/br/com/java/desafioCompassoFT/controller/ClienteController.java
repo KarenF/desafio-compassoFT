@@ -108,7 +108,8 @@ public class ClienteController {
 	public ModelAndView clientesInativos() {
 		
 		ModelAndView mv = new ModelAndView("/inativos/clientesInativos");
-		mv.addObject("clientes", clienteService.findByAtivo(clienteService.findAll()));
+		List<Cliente> clientesInativos = clienteService.findAll();
+		mv.addObject("clientes", clientesInativos);
 		
 		return mv;
 	}
