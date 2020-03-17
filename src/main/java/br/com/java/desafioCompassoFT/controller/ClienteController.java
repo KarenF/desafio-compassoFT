@@ -2,6 +2,7 @@ package br.com.java.desafioCompassoFT.controller;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
@@ -57,6 +58,7 @@ public class ClienteController {
 		cliente.setNomeCliente(clienteModel.getNomeCliente());
 		cliente.setGenero(clienteModel.getGenero());
 		cliente.setDataNascimento(dateTime);
+		cliente.setAtivo(true);
 		
 		String idade = clienteService.findByIdade(dateTime);
 		cliente.setIdade(idade);
@@ -100,5 +102,14 @@ public class ClienteController {
 		clienteService.delete(cliente);
 
 		return "redirect:/";
+	}
+	
+	@RequestMapping(value = "/clientesInativos", method = RequestMethod.GET)
+	public ModelAndView clientesInativos() {
+		
+		ModelAndView mv = new ModelAndView("/inativos/clientesInativos");
+		mv.addObject("clientes", clienteService.findByAtivo(clienteService.findAll()));
+		
+		return mv;
 	}
 }

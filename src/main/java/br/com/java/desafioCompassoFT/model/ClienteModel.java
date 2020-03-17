@@ -9,6 +9,7 @@ public class ClienteModel {
 	private String genero;
 	private LocalDateTime dataNascimento;
 	private String idade;
+	private String ativo;
 
 	private Long idCidade;
 
@@ -50,6 +51,14 @@ public class ClienteModel {
 
 	public void setIdade(String idade) {
 		this.idade = idade;
+	}
+	
+	public String getAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(String ativo) {
+		this.ativo = ativo;
 	}
 
 	public Long getIdCidade() {

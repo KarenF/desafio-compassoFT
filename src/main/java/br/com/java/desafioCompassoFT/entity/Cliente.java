@@ -11,11 +11,15 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "cliente")
 @DynamicUpdate
+@SQLDelete(sql = "update Cliente set ativo = 0 where id = ?")
+@Where(clause = "ativo = 1")
 public class Cliente {
 
 	@Id
@@ -31,6 +35,7 @@ public class Cliente {
 	@DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
 	private LocalDateTime dataNascimento;
 	private String idade;
+	private Boolean ativo;
 
 	public Long getId() {
 		return id;
@@ -70,5 +75,13 @@ public class Cliente {
 
 	public void setIdade(String idade) {
 		this.idade = idade;
+	}
+
+	public Boolean getAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(Boolean ativo) {
+		this.ativo = ativo;
 	}
 }

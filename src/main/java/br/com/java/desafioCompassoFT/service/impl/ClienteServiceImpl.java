@@ -48,18 +48,23 @@ public class ClienteServiceImpl implements ClienteService {
 			idade = "Ainda não nasceu";
 			return idade;
 		}
-		
+
 		long anos = tempDateTime.until(now, ChronoUnit.YEARS);
 		tempDateTime = tempDateTime.plusYears(anos);
 		long meses = tempDateTime.until(now, ChronoUnit.MONTHS);
 		tempDateTime = tempDateTime.plusMonths(meses);
 		long dias = tempDateTime.until(now, ChronoUnit.DAYS);
-		
+
 		idade = anos + " anos " + meses + " meses e " + dias + " dias";
 
 		return idade;
 	}
 
+	@Override
+	public List<Cliente> findByAtivo(List<Cliente> clientes) {
+		return null;
+	}
+	
 	@Override
 	public void delete(Cliente cliente) {
 		this.clienteRepository.delete(cliente);
