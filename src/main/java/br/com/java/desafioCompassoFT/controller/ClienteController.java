@@ -103,14 +103,4 @@ public class ClienteController {
 
 		return "redirect:/";
 	}
-	
-//	@RequestMapping(value = "/clientesInativos", method = RequestMethod.GET)
-//	public ModelAndView clientesInativos() {
-//		
-//		ModelAndView mv = new ModelAndView("/inativos/clientesInativos");
-//		List<Cliente> clientesInativos = clienteService.findAll();
-//		mv.addObject("clientes", clientesInativos);
-//		
-//		return mv;
-//	}
 }

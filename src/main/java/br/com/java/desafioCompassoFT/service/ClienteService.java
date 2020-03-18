@@ -20,7 +20,5 @@ public interface ClienteService {
 	
 	String findByIdade(LocalDateTime dataNascimento) throws Exception;
 	
-//	List<Cliente> findByAtivo(List<Cliente> clientes);
-	
 	void delete(Cliente cliente);
 }
