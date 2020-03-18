@@ -36,3 +36,38 @@
 			</ul>
 		</div>
 	</nav>
+
+	<th:block th:include="mensagemValidacao"></th:block>
+
+	<div class="container cadastrar">
+		<form action="#"
+			th:action="@{/atualizarCliente/{id}(id=${cliente.id})}"
+			th:object="${clientes}" method="post">
+			<div class="row">
+				<div class="input-field col s2">
+					ID do Cliente: <input type="text" th:field="*{id}" readonly />
+				</div>
+				<div class="input-field col s12">
+					Nome do Cliente: <input type="text" th:field="*{nomeCliente}" />
+				</div>
+				<div class="input-field col s4">
+					Gênero: <input type="text" th:field="*{genero}" readonly />
+				</div>
+				<div class="input-field col s3">
+					Data de Nascimento: <input type="text" th:field="*{dataNascimento}"
+						readonly />
+				</div>
+				<div class="input-field col s5">
+					Idade: <input type="text" th:field="*{idade}" readonly />
+				</div>
+				<div class="input-field col s6">
+					Cidade: <input type="text" th:field="" readonly />
+				</div>
+			</div>
+			<button class="waves-effect waves-light btn blue-grey lighten-1" type="submit">Salvar</button>
+		</form>
+	</div>
+
+	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+</body>
+</html>

@@ -15,5 +15,5 @@ public interface ClienteRepository extends JpaRepository<Cliente, Long> {
 
 	String findByIdade(LocalDateTime dataNascimento);
 	
-	List<Cliente> findByAtivo(List<Cliente> clientes);
+//	List<Cliente> findByAtivo(List<Cliente> clientes);
 }

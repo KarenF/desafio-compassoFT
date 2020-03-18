@@ -37,31 +37,20 @@
 		</div>
 	</nav>
 
+	<th:block th:include="mensagemValidacao"></th:block>
+
 	<div class="container cadastrar">
-	
 		<form method="post">
-			Nome do Cliente: <input type="text" value="" name="nomeCliente"
-				placeholder="Nome do Cliente" autofocus />
+			Nome da Cidade: <input type="text" value="" name="nomeCidade"
+				placeholder="Nome da Cidade" autofocus />
 			<div class="row">
-				<div class="input-field col s4">
-					Gênero: <input type="text" value="" name="genero"
-						placeholder="Gênero" />
+				<div class="input-field col s12">
+					Estado: <input type="text" value="" name="estado"
+						placeholder="Estado" />
 				</div>
-					<div class="input-field col s3">
-						Data de Nascimento: <input type="date" value=""
-							name="dataNascimento"  id="dataNascimento" />
-					</div>
-				<div class="input-field col s5">
-						Cidade: <select style="display: block !important" name="idCidade" id="idCidade">
-							<option value="">Escolha a Cidade</option>
-							<option th:each="cidade : ${cidades}" th:value="${cidade.id}"
-								th:utext="${cidade.id} + ' - ' + ${cidade.nomeCidade} + ' - ' + ${cidade.estado}" />
-						</select>
-					</div>
 			</div>
 			<button class="waves-effect waves-light btn blue-grey lighten-1" type="submit">Salvar</button>
 		</form>
-	
 	</div>
 
 	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>

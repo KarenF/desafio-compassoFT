@@ -34,7 +34,7 @@ public class ClienteController {
 	@RequestMapping(value = "/cadastrarCliente", method = RequestMethod.GET)
 	public ModelAndView form() {
 		ModelAndView mv = new ModelAndView("/cadastrar/cadastrarCliente");
-		mv.addObject("cidade", cidadeService.findAll());
+		mv.addObject("cidades", cidadeService.findAll());
 		
 		return mv;
 	}
@@ -76,7 +76,7 @@ public class ClienteController {
 	public ModelAndView atualizarCliente(@PathVariable(name = "id") Long id) {
 		Cliente cliente = clienteService.findById(id);
 		ModelAndView mv = new ModelAndView("atualizarCliente");
-		mv.addObject("cliente", cliente);
+		mv.addObject("clientes", cliente);
 
 		return mv;
 	}
@@ -104,13 +104,13 @@ public class ClienteController {
 		return "redirect:/";
 	}
 	
-	@RequestMapping(value = "/clientesInativos", method = RequestMethod.GET)
-	public ModelAndView clientesInativos() {
-		
-		ModelAndView mv = new ModelAndView("/inativos/clientesInativos");
-		List<Cliente> clientesInativos = clienteService.findAll();
-		mv.addObject("clientes", clientesInativos);
-		
-		return mv;
-	}
+//	@RequestMapping(value = "/clientesInativos", method = RequestMethod.GET)
+//	public ModelAndView clientesInativos() {
+//		
+//		ModelAndView mv = new ModelAndView("/inativos/clientesInativos");
+//		List<Cliente> clientesInativos = clienteService.findAll();
+//		mv.addObject("clientes", clientesInativos);
+//		
+//		return mv;
+//	}
 }

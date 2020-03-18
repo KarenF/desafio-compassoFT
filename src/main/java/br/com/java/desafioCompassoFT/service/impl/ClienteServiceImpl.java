@@ -60,16 +60,16 @@ public class ClienteServiceImpl implements ClienteService {
 		return idade;
 	}
 
-	@Override
-	public List<Cliente> findByAtivo(List<Cliente> clientes) {
-
-		List<Cliente> clientesInativos = null;
-		for (int i = 0; i <= clientes.size(); i++) {
-
-		}
-
-		return clientesInativos;
-	}
+//	@Override
+//	public List<Cliente> findByAtivo(List<Cliente> clientes) {
+//
+//		List<Cliente> clientesInativos = null;
+//		for (int i = 0; i <= clientes.size(); i++) {
+//
+//		}
+//
+//		return clientesInativos;
+//	}
 
 	@Override
 	public void delete(Cliente cliente) {

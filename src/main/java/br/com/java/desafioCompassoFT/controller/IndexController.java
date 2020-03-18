@@ -46,7 +46,7 @@ public class IndexController {
 	public ModelAndView procurarCidade(Cidade cidade, @RequestParam(defaultValue = "") String nomeCidade) {
 
 		ModelAndView mv = new ModelAndView("/procurar/procurarCidade");
-		mv.addObject("cidade", cidadeService.findByNomeCidadeContainingIgnoreCase(nomeCidade));
+		mv.addObject("cidades", cidadeService.findByNomeCidadeContainingIgnoreCase(nomeCidade));
 
 		return mv;
 	}
@@ -55,7 +55,7 @@ public class IndexController {
 	public ModelAndView procurarEstado(Cidade cidade, @RequestParam(defaultValue = "") String estado) {
 
 		ModelAndView mv = new ModelAndView("/procurar/procurarCidade");
-		mv.addObject("cidade", cidadeService.findByEstadoContainingIgnoreCase(estado));
+		mv.addObject("cidades", cidadeService.findByEstadoContainingIgnoreCase(estado));
 
 		return mv;
 	}
@@ -64,7 +64,7 @@ public class IndexController {
 	public ModelAndView procurarCliente(Cliente cliente, @RequestParam(defaultValue = "") String nomeCliente) {
 
 		ModelAndView mv = new ModelAndView("/procurar/procurarCliente");
-		mv.addObject("cliente", clienteService.findByNomeClienteContainingIgnoreCase(nomeCliente));
+		mv.addObject("clientes", clienteService.findByNomeClienteContainingIgnoreCase(nomeCliente));
 
 		return mv;
 	}
@@ -80,7 +80,7 @@ public class IndexController {
 			if (id.equals(null)) {
 				throw new NotFoundException("ID não consta no banco de dados");
 			}
-			mv.addObject("cliente", cliente);
+			mv.addObject("clientes", cliente);
 			return mv;
 		} else {
 			throw new BadRequest("O ID deve ser um número");
