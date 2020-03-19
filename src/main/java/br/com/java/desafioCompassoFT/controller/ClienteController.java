@@ -2,7 +2,6 @@ package br.com.java.desafioCompassoFT.controller;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
@@ -41,16 +40,10 @@ public class ClienteController {
 
 	@RequestMapping(value = "/cadastrarCliente", method = RequestMethod.POST)
 	public String form(ClienteModel clienteModel, BindingResult result, RedirectAttributes attributes) throws Exception {
-		
+
 		String str = result.getFieldValue("dataNascimento").toString() + " 00:00";  
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"); 
 		LocalDateTime dateTime = LocalDateTime.parse(str, formatter);
-		
-//		LocalDateTime teste = (LocalDateTime) ; 
-//		if (result.hasErrors()) {
-//			attributes.addFlashAttribute("mensagem", "Verifique os campos");
-//			return "redirect:/cadastrarCliente";
-//		}
 		
 		Cidade cidade = cidadeService.findById(clienteModel.getIdCidade());
 		Cliente cliente = new Cliente();
@@ -65,9 +58,8 @@ public class ClienteController {
 		
 		Cliente salvo = clienteService.save(cliente);
 		cidade.getCliente().add(salvo); 
-		Cidade cidadesalva = cidadeService.save(cidade); 
+		cidadeService.save(cidade); 
 		
-		Cidade cidadeCarregada = cidadeService.findById(cidadesalva.getId()); 
 		attributes.addFlashAttribute("mensagem", "Cliente adicionado com sucesso");
 		return "redirect:/cadastrarCliente";
 	}
@@ -85,11 +77,6 @@ public class ClienteController {
 	@RequestMapping(value = "/atualizarCliente/{id}", method = RequestMethod.POST)
 	public String atualizarClientePost(@PathVariable("id") Long id, @Valid Cliente cliente,
 			BindingResult result, RedirectAttributes attributes) {
-
-		if (result.hasErrors()) {
-			attributes.addFlashAttribute("mensagem", "Verifique os campos");
-			return "redirect:/atualizarCliente/{id}";
-		}
 
 		clienteService.save(cliente);
 		attributes.addFlashAttribute("mensagem", "Cliente atualizado com sucesso");

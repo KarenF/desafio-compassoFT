@@ -41,7 +41,7 @@
 
 	<div class="container cadastrar">
 		<form action="#"
-			th:action="@{/atualizarCliente/{id}(id=${cliente.id})}"
+			th:action="@{/atualizarCliente/{id}(id=${clientes.id})}"
 			th:object="${clientes}" method="post">
 			<div class="row">
 				<div class="input-field col s2">
@@ -54,14 +54,11 @@
 					Gênero: <input type="text" th:field="*{genero}" readonly />
 				</div>
 				<div class="input-field col s3">
-					Data de Nascimento: <input type="text" th:field="*{dataNascimento}"
+					Data de Nascimento: <input type="text" class="datepicker" th:field="*{dataNascimento}"
 						readonly />
 				</div>
 				<div class="input-field col s5">
 					Idade: <input type="text" th:field="*{idade}" readonly />
-				</div>
-				<div class="input-field col s6">
-					Cidade: <input type="text" th:field="" readonly />
 				</div>
 			</div>
 			<button class="waves-effect waves-light btn blue-grey lighten-1" type="submit">Salvar</button>

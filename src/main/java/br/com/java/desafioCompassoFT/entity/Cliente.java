@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 
 import org.hibernate.annotations.DynamicUpdate;
@@ -32,7 +34,8 @@ public class Cliente {
 	@NotBlank
 	@Column(nullable = false)
 	private String genero;
-	@DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
+	@Column(name = "data_nascimento", columnDefinition = "TIMESTAMP")
+	@DateTimeFormat(iso = DateTimeFormat.ISO.TIME, pattern = "yyyy-MM-dd hh:mm")
 	private LocalDateTime dataNascimento;
 	private String idade;
 	private Boolean ativo;
