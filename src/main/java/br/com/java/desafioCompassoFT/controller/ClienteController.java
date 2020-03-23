@@ -7,21 +7,24 @@ import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.java.desafioCompassoFT.entity.Cidade;
 import br.com.java.desafioCompassoFT.entity.Cliente;
+import br.com.java.desafioCompassoFT.errors.BadRequest;
+import br.com.java.desafioCompassoFT.errors.NotFoundException;
 import br.com.java.desafioCompassoFT.model.ClienteModel;
 import br.com.java.desafioCompassoFT.service.CidadeService;
 import br.com.java.desafioCompassoFT.service.ClienteService;
 
-@Controller
+@RestController
 public class ClienteController {
 
 	@Autowired
@@ -63,11 +66,38 @@ public class ClienteController {
 		attributes.addFlashAttribute("mensagem", "Cliente adicionado com sucesso");
 		return "redirect:/cadastrarCliente";
 	}
+	
+	@RequestMapping(value = "/procurarCliente", method = RequestMethod.GET)
+	public ModelAndView procurarCliente(Cliente cliente, @RequestParam(defaultValue = "") String nomeCliente) {
+
+		ModelAndView mv = new ModelAndView("/procurar/procurarCliente");
+		mv.addObject("clientes", clienteService.findByNomeClienteContainingIgnoreCase(nomeCliente));
+
+		return mv;
+	}
+
+	@RequestMapping(value = "/procurarId", method = RequestMethod.GET)
+	public ModelAndView procurarId(@RequestParam(defaultValue = "") String id) {
+
+		ModelAndView mv = new ModelAndView("/procurar/procurarCliente");
+
+		Cliente cliente = new Cliente();
+		if (id.matches("[0-9]*")) {
+			cliente = this.clienteService.findById(Long.parseLong(id));
+			if (id.equals(null)) {
+				throw new NotFoundException("ID não consta no banco de dados");
+			}
+			mv.addObject("clientes", cliente);
+			return mv;
+		} else {
+			throw new BadRequest("O ID deve ser um número");
+		}
+	}
 
 	@RequestMapping(value = "/atualizarCliente/{id}", method = RequestMethod.GET)
 	public ModelAndView atualizarCliente(@PathVariable(name = "id") Long id) {
 		Cliente cliente = clienteService.findById(id);
-		ModelAndView mv = new ModelAndView("atualizarCliente");
+		ModelAndView mv = new ModelAndView("/atualizar/atualizarCliente");
 		mv.addObject("clientes", cliente);
 
 		return mv;
